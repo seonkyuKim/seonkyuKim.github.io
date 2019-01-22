@@ -12,4 +12,4 @@ django:
     - title: "Django Reference"
       url: /django/reference/
     - title: "Sample"
-      url: /django/
+      url: /#/
