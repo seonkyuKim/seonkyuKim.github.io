@@ -1,0 +1,662 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Introduction to database - SERENDIPITY</title>
+<meta name="description" content="Database">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="SERENDIPITY">
+<meta property="og:title" content="Introduction to database">
+<meta property="og:url" content="http://localhost:4000/database/introduction-to-database/">
+
+
+  <meta property="og:description" content="Database">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-01-22T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/database/introduction-to-database/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Seonkyu Kim(김선규)",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="SERENDIPITY Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">SERENDIPITY</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/django/startingpage/" >Django</a>
+            </li><li class="masthead__menu-item">
+              <a href="/database/" >Database</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Seonkyu Kim(김선규)</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        I am an amazing person.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Somewhere</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Introduction to database">
+    <meta itemprop="description" content="Database">
+    <meta itemprop="datePublished" content="January 22, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Introduction to database
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="database">Database</h1>
+
+<p>이거 하나로 정리 끝</p>
+
+<p><a href="https://medium.com/omarelgabrys-blog/database-introduction-part-1-4844fada1fb0">https://medium.com/omarelgabrys-blog/database-introduction-part-1-4844fada1fb0</a></p>
+
+<ul>
+  <li>테이블을 만들 때는 독립적으로 그와 관련된, <strong>변하지 않는</strong>정보들만 저장한다. 예를 들어 고객 테이블에는 변하지 않는 고객들의 이름과 이메일 등만 저장을 한다.</li>
+  <li>물건을 주문 할 때는 따라서 변하지 않는 주문 테이블을 따로 만드는 것이다.</li>
+</ul>
+
+<h1 id="데이터베이스-만들기">데이터베이스 만들기</h1>
+
+<h2 id="1-자료조사">1. 자료조사</h2>
+
+<h2 id="2-table-relationships-규정하기">2. Table, relationships 규정하기</h2>
+
+<p>objects를 먼저 규정해야 한다. 이는 고객, 강의, 주문, 프로젝트 등 어떠한 형태도 가능하다. 실제로는 존재하지 않는 카테고리 등도 가능하다.</p>
+
+<ul>
+  <li>중복된 것을 없애야 한다.</li>
+  <li>몇몇 object는 합치고 분리해야 한다.</li>
+  <li>object의 attribute를 정의해야한다.</li>
+</ul>
+
+<blockquote>
+  <p>object들은 데이터를 담고 있는 것이지, 관계를 포함하고 있지 않기에 객체지향 언어를 사용할 때는 주의해야 한다.</p>
+</blockquote>
+
+<p>이후 relation을 규정한다.</p>
+
+<ul>
+  <li>1-M : one to many</li>
+  <li>M-N : many to many</li>
+  <li>1-1 : one to one</li>
+</ul>
+
+<h2 id="3-columns와-data-type-규정하기">3. Columns와 Data Type 규정하기</h2>
+
+<p>Datatype은 언어에 따라 달라진다.</p>
+
+<ul>
+  <li>length : name, address와 같은 column은 데이터 타입 뿐 아니라 fixed length를 정해준다.</li>
+  <li>Null : 입력을 하지 않아도 될 경우 null 을 이용한다.</li>
+  <li>Default Value</li>
+  <li>Other options : 이메일과 같은 column일 경우 형식이 맞는지 확인한다.</li>
+</ul>
+
+<h1 id="primary-keys">Primary Keys</h1>
+
+<p>어떤 column이 primary key가 될지 정의한다. 주로 정수형을 쓴다. auto-increment를 안 사용하는 것이 좋을 때도 있다.</p>
+
+<h2 id="composite-primary-key">Composite primary key</h2>
+
+<p>두 개의 column을 합쳐 하나의 primary key로 사용할 수 있다. 강의 수강 학생과 같은 다대다 관계에서 그 예를 볼 수 있다.</p>
+
+<h1 id="logical-design">Logical Design</h1>
+
+<h2 id="weak-relation">Weak Relation</h2>
+
+<p><strong>Partial Key</strong></p>
+
+<p>일종의 primary key. 하지만 상위 요소가 없으면 있을 수 없기 때문에 partial key라 불림</p>
+
+<p>Partial Key 와 Foreign key를 이용해 Primary key 처럼 사용함.</p>
+
+<h2 id="1--1">1 : 1</h2>
+
+<ol>
+  <li>한 쪽이 다른 쪽을 참조하는 방법</li>
+  <li>두 테이블을 합친다.</li>
+  <li>두 개의 Primary key를 갖고 있는 third table을 만든다.</li>
+</ol>
+
+<h2 id="1--m">1 : M</h2>
+
+<p>ER diagram 을 그린 후 relation을 토대로 table을 만들 때</p>
+
+<p><strong>Many에서 1 Side를 참조하는 방향으로 만든다</strong></p>
+
+<h2 id="recursive">Recursive</h2>
+
+<p>recursive는 1:M일 수도, M:M일 수도, 아니면 다른 형태일 수 있다. 그동안 하던 것과 똑같은 방법으로 하면 된다. 예를 들어 Employee와 Supervision과 같이 1:M의 관계가 있을 경우, Supervision이 1 side, employee가 M side다. 이때, employee table의 column에 supervision란을 추가하여 employee 를 참조하면 된다. 없을 경우 null값을 준다.</p>
+
+<p>즉, 이전과 같은 방법으로 진행하되 같은 테이블에 column을 추가하여 같은 테이블을 참조하는 방식이다.</p>
+
+<h2 id="multi-valued-attribute">Multi-valued attribute</h2>
+
+<p>예를 들어 department가 여러 개의 location을 가질 수 있다. 이는 1:M 관계로 department와 location 두 개의 column이 있는 테이블을 새로 만들어준다. 이 두 개의 column을 primary key로 사용한다.</p>
+
+<h1 id="normalization">Normalization</h1>
+
+<h2 id="first-normal-form">First Normal Form</h2>
+
+<p>First normal form requires that every column should have one, and only one value; there is no multi-valued attribute, and there shouldn’t be repeating groups of data.</p>
+
+<h2 id="second-normal-form">Second Normal Form</h2>
+
+<p>The second normal form requires that all of the non-primary columns have to be dependent on the entire (composite) primary key.</p>
+
+<p>회원이 이메일 외에도 다른 attribute를 가질 경우, 그 값들은 third table로 만들지 않는 이상 중복된 값을 가진다. 그래서 third table을 만들어 non-primary column들이 오직 primary key에만 의존적이게 한다.</p>
+
+<p>만약 한 회원이 여러 개의 이메일을 가질 경우, 위에 적힌 1:M을 사용할 수도 있지만, 확장성을 고려하여 새로운 third table을 만든다. 두 개의 column이 email과 ID이고 이 두개의 column을 primary key로 이용한다.</p>
+
+<h2 id="third-normal-form">Third Normal Form</h2>
+
+<p>한 column이 primary key가 아닌 다른 값에 의존적일 때, 그 값들을 새로운 table로 만들어준다. 이는 다른 이가 하나의 값을 변경했을 경우, 그 relation이 무너지는 것을 방지하기 위함이다. 예를 들어 course이름, 강의실 번호, 수용 인원이 있을 경우, 강의실 번호와 수용 인원은 상호관계가 있기 때문에 강의실 table을 따로 설정해주는 것이다.</p>
+
+<p>참고 : <a href="https://3months.tistory.com/193">https://3months.tistory.com/193</a></p>
+
+<h2 id="denormalization">Denormalization</h2>
+
+<p>한 회원이 이메일을 여러 개 갖고 있을 경우, 만약 이메일의 개수를 2개로 제한한다면, email1 column과 email2 column을 설정하는 것으로 표를 만들 수 있다. 이럴 경우 더 쉽고 수월하게 작업할 수 있다.</p>
+
+<h1 id="sqlstructured-query-language">SQL(Structured Query Language)</h1>
+
+<p>The Structured Query Language (SQL) — pronounced S-Q-L — is used for creating, querying, updating and manipulating data in relational databases</p>
+
+<h1 id="dmldata-manipulation-language">DML(Data Manipulation Language)</h1>
+
+<p>The data manipulation language is used to create, read, update, and delete data from a table.</p>
+
+<p><a href="https://www.notion.so/41756fc2e0c745b1a84a041cae904d14">CRUD</a></p>
+
+<p>다양한 명령어들 : <a href="https://medium.com/omarelgabrys-blog/database-structured-query-language-part-8-230a1808ec96">https://medium.com/omarelgabrys-blog/database-structured-query-language-part-8-230a1808ec96</a></p>
+
+<h1 id="indexing">Indexing</h1>
+
+<p>Use index to find the tuple that you want. You can use primary key with the reference to the object in binary tree. Or you can use other columns that you use often. But be careful because when you modify your datas, indexes could be messed up.</p>
+
+<p>(part 9) still writing</p>
+
+<h1 id="transaction">Transaction</h1>
+
+<p>(part 9) still writing</p>
+
+<p><a href="https://www.notion.so/07c094190f9c4659a30a44e6d715080c">비지니스 룰</a></p>
+
+<h1 id="single-table-inheritance">Single Table Inheritance</h1>
+
+<p>두 개의 테이블이 같은 데이터 폼을 갖고 있지만, 서로 다른 기능을 갖고 있을 때</p>
+
+<p><a href="https://www.driftingruby.com/episodes/single-table-inheritance">https://www.driftingruby.com/episodes/single-table-inheritance</a></p>
+
+<p>ex) emergency contact - 전화번호가 있어야 함, friends contact - 생일이 있어야 함</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#database" class="page__taxonomy-item" rel="tag">database</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#reference" class="page__taxonomy-item" rel="tag">reference</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#database" class="page__taxonomy-item" rel="tag">database</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-22T00:00:00+09:00">January 22, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Introduction+to+database%20http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2Fintroduction-to-database%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2Fintroduction-to-database%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2Fintroduction-to-database%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdatabase%2Fintroduction-to-database%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/test1/" class="pagination--pager" title="Test1
+">Previous</a>
+    
+    
+      <a href="/django/Making-queries/" class="pagination--pager" title="Making queries
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/django/introduction-to-model/" rel="permalink">Introduction to models
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  21 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Introduction to models
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/django/Making-queries/" rel="permalink">Making queries
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  11 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Making queries
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/test1/" rel="permalink">Test1
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Seonkyu Kim(김선규). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.6.0/js/all.js" integrity="sha384-z9ZOvGHHo21RqN5De4rfJMoAxYpaVoiYhuJXPyVmSs8yn20IE3PmBM534CffwSJI" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
