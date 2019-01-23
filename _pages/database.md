@@ -1,6 +1,6 @@
 ---
 permalink: /database/
 title: "Database"
-layout: tags
+layout: tag
 taxonomy: database
 ---

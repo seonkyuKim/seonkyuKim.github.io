@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "SERENDIPITY"
+title                    : "GONNABE"
 title_separator          : "-"
 name                     : "Seonkyu Kim(김선규)"
 description              : "Developer"
@@ -108,9 +108,9 @@ analytics:
 author:
   name             : "Seonkyu Kim(김선규)"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
-  email            :
+  bio              : "개발자 블로그"
+  location         : "South Korea"
+  email            : "hopsprings2ternal@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"

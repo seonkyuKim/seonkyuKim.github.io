@@ -1,6 +1,6 @@
 var store = [{
         "title": "Django",
-        "excerpt":"안녕하세요 ㅇㅇㅇ  ","categories": [],
+        "excerpt":"Django Reference는 Django 2.1 공식 document를 번역한 것입니다.  ","categories": [],
         "tags": [],
         "url": "http://localhost:4000/django/startingpage/",
         "teaser":null},{
@@ -8,11 +8,6 @@ var store = [{
         "excerpt":"안녕하세요  ","categories": [],
         "tags": [],
         "url": "http://localhost:4000/django/reference/",
-        "teaser":null},{
-        "title": "Test1",
-        "excerpt":" everyone   ","categories": [],
-        "tags": [],
-        "url": "http://localhost:4000/test1/",
         "teaser":null},{
         "title": "Introduction to database",
         "excerpt":"Database 이거 하나로 정리 끝 https://medium.com/omarelgabrys-blog/database-introduction-part-1-4844fada1fb0 테이블을 만들 때는 독립적으로 그와 관련된, 변하지 않는정보들만 저장한다. 예를 들어 고객 테이블에는 변하지 않는 고객들의 이름과 이메일 등만 저장을 한다. 물건을 주문 할 때는 따라서 변하지 않는 주문 테이블을 따로 만드는 것이다. 데이터베이스 만들기 1. 자료조사 2. Table, relationships 규정하기 objects를 먼저 규정해야...","categories": ["database"],
