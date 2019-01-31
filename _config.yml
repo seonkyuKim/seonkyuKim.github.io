@@ -32,7 +32,7 @@ comments:
   provider               : "disqus"    # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
     # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
-    shortname            : seonkyukim
+    shortname            : seonkyuKim
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -288,9 +288,9 @@ collections:
 
 # comments
 comments:
-  provider: "staticman"
+  provider: "disqus"
   disqus:
-    shortname: short
+    shortname: seonkyuKim
 
 
 # Defaults
