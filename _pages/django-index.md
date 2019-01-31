@@ -1,5 +1,5 @@
 ---
-permalink: /django/index
+permalink: /django/index/
 title: "Django"
 layout: category
 taxonomy: django
