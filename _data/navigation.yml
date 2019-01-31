@@ -1,15 +1,8 @@
 # main links
 main:
   - title: "Django"
-    url: /django/startingpage/
+    url: /django/index/
   - title: "Database"
-    url: /database/
-
-# django documentation links
-django:
-  - title: "Django"
-    children:
-    - title: "Django Reference"
-      url: /django/reference/
-    - title: "Sample"
-      url: /#/
+    url: /database/index
+  - title: "Jekyll"
+    url: /jekyll/index

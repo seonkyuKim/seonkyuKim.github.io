@@ -1,10 +1,10 @@
 ---
-title: "Introduction to models"
+title: Django document 번역 - Introduction to models
 categories:
 - django
-tags:
-- django reference
 ---
+이 글을 읽으며 이해가 안 되고 꽉 막힌듯한 느낌이 드신다면 이는 아마 다른 개념들이 부족하기 때문이실 겁니다. 혹시 database에 대한 개념이 부족한 것은 아닌지, 아니면 객체와 상속에 대한 개념이 부족한 것은 아닌지 확인해보시면 좋을 것 같습니다.
+
 
 # Introduction to models
 

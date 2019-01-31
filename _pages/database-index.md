@@ -1,6 +1,7 @@
 ---
-permalink: /database/
+permalink: /database/index
 title: "Database"
-layout: tag
+layout: category
 taxonomy: database
 ---
+

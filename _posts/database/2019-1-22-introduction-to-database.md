@@ -2,9 +2,6 @@
 title: "Introduction to database"
 categories:
 - database
-tags:
-- database
-- reference
 ---
 
 # Database
