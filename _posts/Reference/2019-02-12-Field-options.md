@@ -5,6 +5,7 @@ tags:
 - dango 2.1
 - reference
 toc: true
+author_profile: true
 ---
 > 들어가며: 본 글은 장고 공식 문서 중 Field types의 Field options에 관한 번역입니다. 피드백은 언제나 감사합니다.
 
