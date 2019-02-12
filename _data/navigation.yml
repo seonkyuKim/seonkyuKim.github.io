@@ -1,8 +1,14 @@
 # main links
 main:
-  - title: "Django"
-    url: /django/index/
-  - title: "Database"
-    url: /database/index
-  - title: "Jekyll"
-    url: /jekyll/index
+  - title: "Tech"
+    url: /tech/index/
+  - title: "Project"
+    url: /project/index/
+  - title: "Reference"
+    url: /reference/index/
+  - title: "Insight"
+    url: /insight/index/
+  - title: "Wine"
+    url: /wine/index/
+  - title: "Tags"
+    url: /tags/
