@@ -168,7 +168,7 @@ default는 변경 가능한 객체(model instance, list, set 등)일 수 없으�
 
 모델 인스턴스로 매핑하는 **ForeignKey**와 같은 필드에 대해서는, default는 모델 인스턴스 대신 그들이 참조하는 필드 값(**to_field**가 설정되지 않은 경우 **pk**)이어야 합니다.
 
-> default 값을 모델을 설정하지 말고, 해당 모델의 field로 설정해야 한다는 뜻 같습니다.
+> default 값을 모델을 설정하지 말고, 해당 모델의 primary key인 field로 설정해야 한다는 뜻 같습니다.
 
 default(기본 값)은 새로운 모델 인스턴스가 생기고, 해당 필드에 대해 값이 주어지지 않을 경우 사용됩니다. 필드가 primary key일 경우, 필드가 None으로 설정되어 있어도 default를 사용합니다.
 

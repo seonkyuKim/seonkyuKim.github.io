@@ -129,7 +129,7 @@ choices list의 예시는 다음과 같습니다:
 
 각각의 tuple의 첫 번째 요소는 database에 저장되는 값입니다. 두 번째 요소는 field의 form widget에 나타나는 값(display value)입니다.
 
-model instance가 주어졌을 때, **choices**를 갖고 있는 field에서 display value는 **get_F00_display()** method를 이용하여 접근할 수 있다. 예시를 보자:
+model instance가 주어졌을 때, **choices**를 갖고 있는 field에서 표시되는 값은 **get_F00_display()** method를 이용하여 알 수 있습니다. 예시를 보십시오:
 
     from django.db import models
     
@@ -149,21 +149,21 @@ model instance가 주어졌을 때, **choices**를 갖고 있는 field에서 dis
     >>> p.get_shirt_size_display()
     'Large'
 
-**`default`**
+**default**
 
-field의 초기 값이다. 이는 한 값이나 callable object가 될 수 있다. 만약 callable하다면 이것은 새로운 object가 생성될 때마다 실행될 것이다.
+field의 초기 값 입니다. 어떠한 한 값이나 callable object가 될 수 있습니다. 만약 callable하다면 이 객체는 새로운 object가 생성될 때마다 실행될 것입니다.
 
-**`help_text`**
+**help_text**
 
-form widget에 표시될 추가적인 "help" text이다. 이는 field가 form에서 사용되지 않더라도 documentation하는데 유용하다.
+form widget에 표시될 추가적인 도움말 입니다. 만약 폼에서 해당 필드를 사용하지 않더라도 설명을 표기하는데 유용합니다
 
-**`primary_key`**
+**primary_key**
 
-만약 **True**라면, 이 field는 model의 primary key가 된다.
+만약 **True**라면, 이 field는 model의 primary key가 됩니다.
 
-만약 너가 model에서 어떤 field에도 **`primary_key=True`**로 설정해 두지 않았다면, Django는 자동적으로 primary key로 사용할 `**IntegerField**`를 추가하기 때문에 너가 default primary-key를 override하고 싶지 않은 이상 어떤 field에 **`primary_key=True`**를 설정할 필요없다. `Automatic primary key fields`에 더 자세히 기술되어 있다.
+만약 model에서 어떤 field에도 **primary_key=True**로 설정해 두지 않았다면, Django는 자동적으로 primary key로 사용할 **IntegerField**를 추가하기 때문에 이러한 기본 primary-key를 override하고 싶지 않은 이상 어떤 field에 **primary_key=True**를 설정할 필요 없습니다. `Automatic primary key fields`에 더 자세히 기술되어 있습니다.
 
-primary key field는 읽을 수만 있다. 만약 너가 기존 object의 primary key 값을 변경한다면, 기존 object옆에 새로운 object가 생성될 것이다. 예시를 보자:
+primary key field는 읽을 수만 있습니다. 만약 기존 object의 primary key 값을 변경한다면, 기존 object 옆에 새로운 object가 생성될 것입니다. 예시를 보십시오:
 
     from django.db import models
     
@@ -176,41 +176,42 @@ primary key field는 읽을 수만 있다. 만약 너가 기존 object의 primar
     >>> Fruit.objects.values_list('name', flat=True)
     <QuerySet ['Apple', 'Pear']>
 
-**`unique`**
+**unique**
 
-만약 True라면, 이 field는 table 전체에서 유일해야 한다.
+만약 True라면, 이 field는 table 전체에서 유일해야 합니다.
 
-다시 한 번 말하지만, 이들은 모두 공통된 field option들에 대한 짧은 설명이다. 자세한 내용은 `common model field option reference`에 기술되어 있다.
+다시 한 번 말하지만, 이들은 모두 공통된 field option들에 대한 짧은 설명일 뿐입니다. 자세한 내용은 `common model field option reference`에 기술되어 있습니다.
 
----
+
 
 ## Automatic primary key fields
 
-초기 값으로, Django는 각각의 model에 다음과 같은 field를 생성한다:
+초기 값으로, Django는 각각의 model에 다음과 같은 field를 생성합니다:
 
     id = models.AutoField(primary_key=True)
 
-이는 auto-incrementing primary key이다.
+이는 자동적으로 증가하는 (auto-incrementing) primary key입니다.
 
-만약 너가 custom primary key를 명시하고 싶다면, 너의 field들 중 하나에 **`primary_key=True`**를 명시하여라. 만약 명시적으로 **`Field.primary_key`**를 설정 했다면, Django는 자동적으로 생성된 **id** column을 추가하지 않을 것이다.
+만약 custom primary key를 사용하고 싶다면, 모델의 field들 중 하나에 **primary_key=True**를 명시하십시오. 만약 명시적으로 **Field.primary_key**를 설정 했다면, Django는 위의 자동적으로 생성된 **id** column을 추가하지 않을 것입니다.
 
-각각의 model은 오직 하나의 field만이 primary_key=True를 갖고 있어야 한다(명시적으로 추가 되었든지 아니면 자동적으로 추가 되었든지).
+각각의 model은 (명시적으로 추가 되었든지 아니면 자동적으로 추가 되었든지간에) 오직 하나의 field만이 **primary_key=True**를 갖고 있어야 합니다.
 
----
+
 
 ## Verbose field names
 
-**`ForeignKey`**, **`ManyToManyField`**와 **`OneToOneField`**를 제외하고, 각각의 field type들은 선택적인 첫 번째 위치의 argument들을 갖는다 - 바로 verbose name이다. 만약 verbose name이 주어지지 않았다면, Django는 자동적으로 field의 attribute name에 있는 underscores를 space로 바꾸어 verbose name을 생성한다.
+>Verbose name을 직역하면 장황한 이름입니다.
+**ForeignKey**, **ManyToManyField**와 **OneToOneField**를 제외하고, 각각의 field type들은 선택적으로(optional) 첫 번째 위치의 argument로 verbose name을 갖습니다. 만약 verbose name이 주어지지 않았다면, Django는 자동적으로 field의 attribute 이름에 있는 underscores를 space로 바꾸어 verbose name을 생성합니다.
 
-이 예시에서 verbose name은 "**person's first name**"이다:
+이 예시에서 verbose name은 "**person's first name**"입니다:
 
     first_name = models.CharField("person's first name", max_length=30)
 
-이 예시에서 verbose name은 "**first name**"이다:
+이 예시에서 verbose name은 "**first name**"입니다:
 
     first_name = models.CharField(max_length=30)
 
-**`ForeignKey`**, **`ManyToManyField`**와 **`OneToOneField`**는 첫 번째 argument로 model class가 필요로 하기 때문에 **`verbose_name`** keyword argument를 사용한다.
+**ForeignKey**, **ManyToManyField**와 **OneToOneField**는 첫 번째 argument로 model class가 필요하기 때문에 **verbose_name** keyword argument를 사용합니다.
 
     poll = models.ForeignKey(
     	Poll,
@@ -224,21 +225,21 @@ primary key field는 읽을 수만 있다. 만약 너가 기존 object의 primar
     	verbose_name="related place",
     )
 
-관습적으로 **`verbose_name`**의 첫 글자는 대문자를 쓰지 않는다. Django가 자동적으로 첫 번째 글자를 대문자로 바꾸어주기 때문이다.
+관습적으로 **verbose_name**의 첫 글자는 대문자를 쓰지 않습니다. Django가 자동적으로 첫 번째 글자를 대문자로 바꾸어주기 때문입니다.
 
----
+
 
 ## Relationships
 
-명확하게, relational database의 강점은 table간에 relating이 되어있다는 점이다. Django는 가장 많이 사용되는 세 가지 database relationship을 정의해준다: many-to-one, many-to-many 그리고 one-to-one이다.
+명확하게, relational database의 강점은 테이블간에 relating이 되어있다는 점입니다. Django는 가장 많이 사용되는 세 가지 database relationship을 정의해 줍니다: many-to-one, many-to-many 그리고 one-to-one.
 
 **Many-to-one relationships**
 
-many-to-one relationship을 정의하기 위해, **`django.db.models.ForeignKey`**를 사용해라. 너는 이것을 다른 **`Field`** type처럼 사용하면 된다: 너의 model에 class attribute처럼 추가하여라.
+many-to-one relationship을 정의하기 위해, **django.db.models.ForeignKey**를 사용합니다. 이것을 다른 **Field** 타입처럼 사용하면 됩니다: model에 class attribute로 추가하십시오.
 
-**`ForeignKey`**는 지정된 위치의 argument를 요구한다: 모델과 relate된 class를 지정하는 것이다.
+**ForeignKey**는 정해진 위치의 필수 argument를 요구합니다: 모델과 relate된 class를 지정하는 것입니다.
 
-예를 들어, **Car** model이 **Manufacturer**을 갖고 있다면 - 즉, **Manufacturer**은 다양한 cars를 만들지만 각각의 **Car**는 단 하나의 **Manufacturer**를 갖고 있다 - 다음과 같은 정의를 써라:
+예를 들어, **Car** model이 **Manufacturer**을 갖고 있다면 - 즉, **Manufacturer**은 다양한 cars를 만들지만 각각의 **Car**는 단 하나의 **Manufacturer**를 갖고 있다 - 다음과 같이 할 수 있습니다:
 
     from django.db import models
     
@@ -250,9 +251,9 @@ many-to-one relationship을 정의하기 위해, **`django.db.models.ForeignKey`
     	manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
     	# ...
 
-너는 또한 `recursive relationship`(자기 자신에게 many-to-one relationship을 갖고 있는 object)을 만들 수 있고 `아직 정의되지 않은 model에게 relationship`을 만들 수 있다; 자세한 사항은 `model field reference`를 참고하라.
+또한 `recursive relationship`(자기 자신에게 many-to-one relationship을 갖고 있는 object)을 만들 수 있고 `아직 정의되지 않은 model에게 relationship`을 만들 수 있습니다; 자세한 사항은 `model field reference`를 참고하십시오.
 
-필수적인 것은 아니지만, **`ForeignKey field`**의 이름(위의 예에서는 **manufacturer**)은 소문자의 model 이름을 사용하는 것이 좋다. 물론, 너는 너가 원하는 대로 field 이름을 정해도 된다. 예시를 보자:
+필수적인 것은 아니지만, **ForeignKey field**의 이름(위의 예에서는 **manufacturer**)은 소문자의 model 이름을 사용하는 것이 좋습니다. 물론, 원하는 대로 field 이름을 정해도 됩니다. 예시를 보십시오:
 
     class Car(models.Model):
     	company_that_makes_it = models.ForeignKey(
@@ -262,7 +263,7 @@ many-to-one relationship을 정의하기 위해, **`django.db.models.ForeignKey`
 
 - **See also**
 
-    **`ForeignKey`** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있다. 이 option들은 relationship이 어떻게 작동할지 규정한다; 모두 optional이다. 
+    **ForeignKey** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있다. 이 option들은 relationship이 어떻게 작동할지 규정한다; 모두 optional이다. 
 
     backward-related objects에 접근하는 방법에 대해서는 Following relationships backward example을 참고하라.
 
