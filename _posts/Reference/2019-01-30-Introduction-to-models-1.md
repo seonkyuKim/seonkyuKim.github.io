@@ -89,7 +89,7 @@ models를 정의한 후, Django의 settings file을 수정하여 앞으로 그 m
 model 안의 각각의 field는 적당한 **Field** class안의 instance여야 합니다. Django는 다음 몇 가지를 결정하기 위해 field class types를 사용합니다:
 
 - Column type은 어떤 종류의 database를 저장할지 알려 줍니다.(e.g.**INTEGER, VARCHAR, TEXT**)
-- Default HTML `widget`은 form field들을 rendering할 때 사용됩니다.(e.g. **<input type="text"><select>**)
+- Default HTML `widget`은 form field들을 rendering할 때 사용됩니다.(e.g. **`<input type="text"><select>`**)
 - Minimal validation requirements는 Django의 admin과 자동으로 생성되는 form에서 사용됩니다.
 
 Django는 수십 개의 내장 field-type들을 갖고 있습니다; 그 전체 목록을 `model field reference`에서 확인할 수 있다. 만약 Django의 내장 field가 제 기능을 못 할 경우, 당신만의 field를 쉽게 작성할 수 있다; `Writing custom model fields`를 참조하십시오.
