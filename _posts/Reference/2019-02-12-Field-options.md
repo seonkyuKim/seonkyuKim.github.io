@@ -2,7 +2,7 @@
 title: "Django 2.1 reference 번역: Field options"
 categories: reference
 tags:
-- dango 2.1
+- django 2.1
 - reference
 toc: true
 author_profile: true
