@@ -14,15 +14,11 @@ author_profile: true
 이 문서는 장고가 제공하는 모든 `field options`과 `field types`을 포함한 **`Field`**에 대해 설명하고 있습니다.
 
 
-- **See also**
+**See also**<br><br>만약 내장된 field가 작동하지 않으면 `django-localflavor`(`documentation`)를 시도해 보십시오. 이는 특별한 국가와 문화에 대해서 갖가지 유용한 code의 조각을 가지고 있습니다.<br>또한 당신은 쉽게 당신만의 `custom model fields`를 만들 수 있습니다.
+{: .notice--info}
 
-    만약 내장된 field가 작동하지 않으면 `django-localflavor`(`documentation`)를 시도해 보십시오. 이는 특별한 국가와 문화에 대해서 갖가지 유용한 code의 조각을 가지고 있습니다.
-
-    또한 당신은 쉽게 당신만의 `custom model fields`를 만들 수 있습니다.
-
-- **Note**
-
-    기술적으로, 이런 모델들은 **django.db.models.fields**에 저장되어 있으나 편리함을 위해 그들은 **django.db.models**안에 imported 되어있습니다. 기본적인 명명 관습은 **from django.go import models**를 사용하는 것이며, fields는 **models.<Foo>Field**로 나타나는 것입니다.
+**Note**<br><br>기술적으로, 이런 모델들은 **django.db.models.fields**에 저장되어 있으나 편리함을 위해 그들은 **django.db.models**안에 imported 되어있습니다. 기본적인 명명 관습은 **from django.go import models**를 사용하는 것이며, fields는 **models.<Foo>Field**로 나타나는 것입니다.
+{: .notice--warning}
 
 # Field options
 
@@ -42,10 +38,8 @@ author_profile: true
 
 string-based 와 non-string-based field 에서 forms에 빈값을 넣는 것을 원한다면 **blank=True**로 설정해 주어야 합니다. **null** 값은 단지 database storage에 영향을 미치기 때문입니다(**blank**를 보십시오).
 
-- **Note**
-
-    Oracle database backend를 사용할 때, **NULL**은 이 attribute와 상관없이 빈 값을 나타내는 것으로 저장될 것입니다. 
-
+**Note**<br><br>Oracle database backend를 사용할 때, **NULL**은 이 attribute와 상관없이 빈 값을 나타내는 것으로 저장될 것입니다. 
+{: .notice--warning}
 
 
 ## blank

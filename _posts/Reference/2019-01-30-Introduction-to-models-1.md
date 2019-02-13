@@ -262,13 +262,9 @@ many-to-one relationship을 정의하기 위해, **django.db.models.ForeignKey**
     		on_delete=models.CASCADE,
     	)
 
-- **See also**
+**See also**<br><br>**ForeignKey** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있습니다. 이 옵션들은 relationship이 어떻게 작동할지를 규정해 줍니다; 모두 optional입니다.<br>backward-related objects에 접근하는 방법에 대해서는 `Following relationships backward example`을 참고하십시오.<br>sample code를 보고 싶다면 `Many-to-one relationship model example`을 참고하십시오.
+{: .notice--info}
 
-    **ForeignKey** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있습니다. 이 옵션들은 relationship이 어떻게 작동할지를 규정해 줍니다; 모두 optional이다. 
-
-    backward-related objects에 접근하는 방법에 대해서는 `Following relationships backward example`을 참고하십시오.
-
-    sample code를 보고 싶다면 `Many-to-one relationship model example`을 참고하십시오.
 
 ---
 
@@ -298,9 +294,8 @@ Many-to-many relationships를 사용하기 위해서는, **ManyToManyField**를 
 
 위의 예시에서는 폼에서 Pizza의 toppings를 선택할 수 있게 해줍니다(**Topping**이 많은 **pizzas**를 갖고 있는 것이 아닙니다). 이는 pizza가 많은 topping들이 갖고 있다고 생각하는 것이 topping이 많은 pizza들 위에 있다고 생각하는 것보다 자연스럽기 때문입니다. 이와 같이 일반적으로 **ManyToManyField** instance는 폼에서 수정되어야 하는 객체 안에 있어야 합니다. 
 
-- **See also**
-
-    전체 예시를 보기 위해서는 `Many-to-many relationship model example`을 참조하십시오.
+**See also**<br><br>전체 예시를 보기 위해서는 `Many-to-many relationship model example`을 참조하십시오.
+{: .notice--info}
 
 **ManyToManyField** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있습니다. 이 옵션들은 relationship이 어떻게 작동할지 규정합니다; 모두 optional입니다.
 
@@ -435,9 +430,8 @@ one-to-one relationship을 정의하기 위해, **OneToOneField**를 사용하�
 
 **ForeignKey** 와 함께 `recursive relationship`은 정의될 수 있고 `references to as-yet undefined model`도 만들어 질 수 있습니다.
 
-- **See also**
-
-    전체 예시를 보기 위해 `One-to-one relationship model example`을 참고하십시오.
+**See also**<br><br>전체 예시를 보기 위해 `One-to-one relationship model example`을 참고하십시오.
+{: .notice--info}
 
 **OneToOneField**는 또한 optional **parent_link** argument를 사용할 수 있습니다.
 
@@ -599,12 +593,8 @@ database에 object가 저장되는 것을 확실히 하기 위해 superclass의 
 
 또한 model method 에 사용되는 parameter를 전달하는 것이 중요합니다 - 바로 ***args, **kwargs**들이 그렇게 해줍니다. Django는 수시로 새로운 argument를 추가하면서 내장된 model method 기능들을 확장합니다. 만약 method를 정의할 때 ***args**, ****kwargs**를 사용한다면, 당신의 코드는 argument들이 추가될 때 자동적으로 이들을 지원할 것입니다.
 
-- **Overriden model methods are not called on bulk operations**
-
-    `deleting objects in bulk using a QuerySet`을 하거나 **cascading delete**의 결과로 삭제 될 때 객체의 **delete()** method는 항상 호출되지는 않습니다. customized delete logic이 실행 되었는지 확인하고 싶다면, **pre_delete** 또는 **post_delete**를 사용할 수 있습니다.
-
-    불행히도 bulk로 객체를 생성하거나 업데이트 할 때는 해결할 수 있는 방법이 없습니다. 왜냐하면 **save()**, **pre_save**, 그리고 **post_save** 그 어느 것도 호출되지 않기 때문입니다.
-
+**Overriden model methods are not called on bulk operations**   `deleting objects in bulk using a QuerySet`을 하거나 **cascading delete**의 결과로 삭제 될 때 객체의 **delete()** method는 항상 호출되지는 않습니다. customized delete logic이 실행 되었는지 확인하고 싶다면, **pre_delete** 또는 **post_delete**를 사용할 수 있습니다.  불행히도 bulk로 객체를 생성하거나 업데이트 할 때는 해결할 수 있는 방법이 없습니다. 왜냐하면 **save()**, **pre_save**, 그리고 **post_save** 그 어느 것도 호출되지 않기 때문입니다.
+{: .notice--success}
 
 
 ## Executing custom SQL
