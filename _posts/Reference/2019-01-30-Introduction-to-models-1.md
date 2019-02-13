@@ -237,7 +237,7 @@ primary key field는 읽을 수만 있습니다. 만약 기존 object의 primary
 
 many-to-one relationship을 정의하기 위해, **django.db.models.ForeignKey**를 사용합니다. 이것을 다른 **Field** 타입처럼 사용하면 됩니다: model에 class attribute로 추가하십시오.
 
-**ForeignKey**는 정해진 위치의 필수 argument를 요구합니다: 모델과 relate된 class를 지정하는 것입니다.
+**ForeignKey**는 정해진 위치의 필수 argument를 요구합니다: 모델과 relate된 class를 지정합니다.
 
 예를 들어, **Car** model이 **Manufacturer**을 갖고 있다면 - 즉, **Manufacturer**은 다양한 cars를 만들지만 각각의 **Car**는 단 하나의 **Manufacturer**를 갖고 있다 - 다음과 같이 할 수 있습니다:
 
@@ -263,21 +263,21 @@ many-to-one relationship을 정의하기 위해, **django.db.models.ForeignKey**
 
 - **See also**
 
-    **ForeignKey** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있다. 이 option들은 relationship이 어떻게 작동할지 규정한다; 모두 optional이다. 
+    **ForeignKey** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있습니다. 이 옵션들은 relationship이 어떻게 작동할지를 규정해 줍니다; 모두 optional이다. 
 
-    backward-related objects에 접근하는 방법에 대해서는 Following relationships backward example을 참고하라.
+    backward-related objects에 접근하는 방법에 대해서는 `Following relationships backward example`을 참고하십시오.
 
-    sample code를 보고 싶다면 Many-to-one relationship model example을 참고하라.
+    sample code를 보고 싶다면 `Many-to-one relationship model example`을 참고하십시오.
 
 ---
 
 **Many-to-many relationships**
 
-Many-to-many relationships를 정의하기 위해, **`ManyToManyField`**를 사용해라. 너는 이것을 다른 **`Field`** type처럼 사용하면 된다: 너의 model에 class attribute처럼 추가하여라.
+Many-to-many relationships를 사용하기 위해서는, **ManyToManyField**를 사용하십시오. 이것을 다른 **Field** type처럼 사용하시면 됩니다: model에 class attribute로 추가하십시오.
 
-**`ManyToManyField`**는 지정된 위치의 argument를 요구한다: relate할 class를 지정하는 것이다.
+**ManyToManyField**는 지정된 위치의 필수 argument를 요구합니다: relate할 class를 지정합니다.
 
-예를 들어, **Pizza** 가 다양한 **Topping** objects를 갖고 있다면 - 즉, 한 **Topping**이 다양한 pizzas에 있을 수 있고 각각의 **Pizza**는 다양한 toppings를 가질 수 있다 - 다음과 같이 이를 나타내면 된다:
+예를 들어, **Pizza** 가 다양한 **Topping** objects를 갖고 있다면 - 즉, 한 **Topping**이 다양한 pizzas에 있을 수 있고 각각의 **Pizza**도 다양한 toppings를 가질 수 있다면 - 다음과 같이 이를 나타낼 수 있습니다:
 
     from django.db import models
     
@@ -289,29 +289,29 @@ Many-to-many relationships를 정의하기 위해, **`ManyToManyField`**를 사�
     	# ...
     	toppings = models.ManyToManyField(Topping)
 
-**`ForeignKey`**와 마찬가지로, 너는 `recursive relationship`(자기 자신에게 many-to-many relationship을 갖고 있는 object)을 만들 수 있고 `아직 정의되지 않은 model에게 relationship`을 만들 수 있다.
+**ForeignKey**와 마찬가지로, recursive relationship(자기 자신에게 many-to-many relationship을 갖고 있는 객체)를 만들 수 있고 `아직 정의되지 않은 model에게 relationship`을 만들 수 있습니다.
 
-필수적인 것은 아니지만, **`ManyToManyField`**의 이름(위 예에서는 **toppings**)을 related model objects를 묘사하고 있는 복수형으로 하는 것이 좋다.
+필수적인 것은 아니지만, related 모델을 나타내는 **ManyToManyField**의 이름은 복수형을 하는 것이 좋습니다(위 예에서는 **toppings**).
 
-어떤 model이 **`ManyToManyField`**를 갖고 있는지는 중요하지 않지만, 너는 두 쪽 모두가 아니라 한 쪽에만 이것을 설정해야 한다.
+어떤 model이 **ManyToManyField**를 갖고 있는지는 상관 없지만, 두 model 모두가 아니라 한 쪽에만 설정해야 합니다.
 
-일반적으로, **`ManyToManyField`** instance는 form에서 수정되어야 하는 object에 있어야 한다. 위의 예에서는 **toppings**는 **Pizza**에 있는데(**Topping**이 많은 **pizzas `ManyToManyField`**를 갖고 있는 것이 아니다) 그 이유는 pizza가 많은 topping들이 갖고 있다고 생각하는 것이 topping이 많은 pizza들 위에 있다고 생각하는 것보다 자연스럽기 때문이다. 위에서는 이와 같이 설정되어 있으며, Pizza는 사용자들이 topppings들을 선택할 수 있게 해준다.
+위의 예시에서는 폼에서 Pizza의 toppings를 선택할 수 있게 해줍니다(**Topping**이 많은 **pizzas**를 갖고 있는 것이 아닙니다). 이는 pizza가 많은 topping들이 갖고 있다고 생각하는 것이 topping이 많은 pizza들 위에 있다고 생각하는 것보다 자연스럽기 때문입니다. 이와 같이 일반적으로 **ManyToManyField** instance는 폼에서 수정되어야 하는 객체 안에 있어야 합니다. 
 
 - **See also**
 
-    전체 예시를 보기 위해서는 `Many-to-many relationship model example`을 참조하라.
+    전체 예시를 보기 위해서는 `Many-to-many relationship model example`을 참조하십시오.
 
-**`ManyToManyField`** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있다. 이 option들은 relationship이 어떻게 작동할지 규정한다; 모두 optional이다.
+**ManyToManyField** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있습니다. 이 옵션들은 relationship이 어떻게 작동할지 규정합니다; 모두 optional입니다.
 
 ---
 
 **Extra fields on many-to-many relationships**
 
-pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있다면, **`ManyToManyField`**가 너가 필요한 전부이다. 하지만, 때때로 너는 relationship이 있는 두 models간의 데이터들을 연결지어야 한다.
+pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있다면, **ManyToManyField**만 사용하시면 됩니다. 하지만, 때때로 relationship이 있는 두 models간의 데이터들을 연결지어야 할 것입니다.
 
-예를 들어 musicians이 속해있는 musical group을 추적하는 경우를 생각해보자. 여기에는 person과 그들이 멤버로서 속해있는 group들 간의 many-to-many relationship이 있고, 너는 이 관계를 나타내기 위해 **`ManyToManyField`**를 사용할 수 있다. 그러나, 너가 얻고 싶어하는 membership과 관련된 세부 사항들, 예를 들어 person들이 group에 들어간 날짜 등이 많이 있다. 
+예를 들어 musicians이 속해있는 musical group이 있는 경우를 생각해보십시오. 여기에는 person과 그들이 멤버로서 속해있는 group들 간의 many-to-many relationship이 있고, 이 관계를 나타내기 위해 **ManyToManyField**를 사용할 수 있습니다. 그러나, membership과 관련된 세부 사항들, 예를 들어 person들이 group에 들어간 날짜 등이 많이 있다고 가정합시다. 
 
-이러한 상황들에서, Django에서 너는 many-to-many relationship을 관리하는 model을 명시할 수 있다. 또한 너는 이 intermidate model에 추가적인 field들을 넣을 수 있다. intermediary 역할을 할 model을 알려주는  **`through`** argument를 이용하여 intermediate model은 **`ManyToManyField`**와 연결될 수 있다. 우리의 musician 예시는 다음 코드와 같이 쓸 수 있다:
+이러한 상황에서, Django에서는 many-to-many relationship을 관리하는 model을 명시할 수 있습니다. 또한 이 intermidate model에 추가적인 field들을 넣을 수 있습니다. 중간 테이블 역할을 할 model을 알려주는  **through** argument를 이용하여 중간 model은 **ManyToManyField**와 연결될 수 있습니다. 우리의 musician 예시는 다음 코드와 같이 쓸 수 있습니다:
 
     from django.db import models
     
@@ -334,15 +334,16 @@ pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있�
     	date_joined = models.DateField()
     	invite_reason = models.CharField(max_length=64)
 
-너가 intermediary model을 만들 때, 너는 many-to-many relationship에 포함될 model들에게 foreign key를 명시적으로 지정해주어야 한다. 이 명시적 선언은 두 model들이 어떻게 relate되는지 정의한다.
+중간 model을 만들 때는 foreign key를 이용하여 many-to-many relationship에 포함될 model들을 명시적으로 지정해주어야 합니다. 이 명시적 선언은 두 model들이 어떻게 relate되는지 정의합니다.
 
-다음은 intermediate model에서 몇 가지 제약 사항이다:
+다음은 중간 model에서 몇 가지 제약 사항들입니다:
 
-- 너의 intermediate model은 source model(우리의 예에서는 **Group**)로 향하는 foreign key는 단 하나만 갖고 있어야 한거나, **`ManyToManyField.through_fields`**를 사용하여 Django가 relationship을 위해 사용해야 하는 foreign key를 명시적으로 지정해야 한다. 만약 한 개 이상의 foreign key를 갖고 있거나 through_fields가 명시되어 있지 않으면 validation error가 발생할 것이다. 비슷한 제약은 target model(우리의 예에서는 **Person**)에서도 적용된다.
-- intermediary model을 이용하여 자기 자신에게 many-to-many relationship을 갖고 있는 model에 대해서는, 같은 model로 두 개의 foreign key가 있을 수 있다. 하지만 그들은 many-to-many relationship에서 서로 다른 측면에 있는 것으로 간주된다. 만약 두 개 이상의 foreign key가 있다면, 너는 역시 **through_fields**를 위와 같이 명시해 주어야 validation error가 발생하지 않을 것이다.
-- intermediary model을 이용하여 자기 자신에게 **`many-to-many relationship`**을 정의할 때, 너는 `symmetrical=False` 를 사용해야 한다(model field reference를 참조하라).
+- intermediate model은 source model(우리의 예에서는 **Group**)로 향하는 foreign key는 단 하나만 갖고 있어야 합니다. 또는 **ManyToManyField.through_fields**를 사용하여 Django가 relationship을 위해 사용해야 하는 foreign key를 명시적으로 지정해 주어야 합니다. 만약 한 개 이상의 foreign key를 갖고 있거나 through_fields가 명시되어 있지 않으면 validation error가 발생할 것입니다. 비슷한 제약은 target model(우리의 예에서는 **Person**)에서도 적용됩니다.
+    >**through_fields**의 내용은 model field reference를 참고해주세요.
+- 중간 model을 이용하여 자기 자신에게 many-to-many relationship을 갖는 model에 대해서는, 같은 model을 향한 두 개의 foreign key가 있을 수 있습니다. 하지만 그들은 many-to-many relationship에서 서로 다른 측면에 있는 것으로 간주됩니다. 만약 두 개 이상의 foreign key가 있다면, 역시 **through_fields**를 위와 같이 명시해 주어야 validation error가 발생하지 않을 것입니다.
+- 중간 model을 이용하여 자기 자신에게 **many-to-many relationship**을 정의할 때, **symmetrical=False** 를 사용해야 합니다(model field reference를 참조하십시오).
 
-이제 너의 intermediatry model(우리의 경우 **Membership**)을 이용하기 위한 **`ManyToManyField`** 준비 작업을 마쳤고, 너는 many-to-many relationship을 사용할 준비가 되었다. 너는 이것을 intermediate model의 instances를 만들어 사용할 수 있다:
+이제 중간 model(예시의 경우 **Membership**)을 이용하기 위한 **ManyToManyField** 준비 작업을 마쳤고, many-to-many relationship을 사용할 준비가 되었습니다. intermediate model의 instances를 만들어 사용할 수 있습니다:
 
     >>> ringo = Person.objects.create(name="Ringo Starr")
     >>> paul = Person.objects.create(name="Paul McCartney")
@@ -361,16 +362,16 @@ pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있�
     >>> beatles.memebers.all()
     <QuerySet [<Person: Ringo starr>, <Person: Paul McCartney>]>
 
-보통의 many-to-many field과는 다르게, 너는 **add()**, **create()**, 또는 **set()** 을 relationship을 만들기 위해 사용할 수 없다.
+보통의 many-to-many field과는 다르게, relationship을 만들기 위해서 **add()**, **create()**, 또는 **set()** 을  사용할 수 없습니다.
 
     >>> # The following statements will not work
     >>> beatles.members.add(john)
     >>> beatles.members.create(name="George Harrison")
     >>> beatles.members.set([john, paul, ringo, george])
 
-왜 그럴까? 너는 단순히 **Person**과 **Group**사이의 relationship을 만들 수 없다 - 너는 **Membership** model이 필요로 하는 모든 세부 사항들을 명시해 주어야 한다. 단순히 **add**, **create** 그리고 assignment call으로는 이러한 추가적인 세부 사항들을 알려줄 방법이 없다. 결과적으로, 이들은 intermediate model을 이용하는 many-to-many relationship에 사용 불가능하다. 이런 종류의 relationship을 만드는 유일한 방법은 intermeidate model의 instance들을 생성하는 것이다.
+왜 그럴까요? 단순히 **Person**과 **Group**사이의 relationship을 만들 수 없습니다 - 왜냐하면 **Membership** model이 필요로 하는 모든 세부 사항들을 명시해 주어야 하기 때문입니다. 단순히 **add**, **create** 그리고 assignment call으로는 이러한 추가적인 세부 사항들을 알려줄 방법이 없습니다. 결과적으로, 이들 함수는 중간 model을 이용하는 many-to-many relationship에서 사용 불가능합니다. 이런 종류의 relationship을 만드는 유일한 방법은 intermeidate model의 instance들을 생성하는 것입니다.
 
-**`remove()`** method도 비슷한 이유로 사용 불가능하다. 예를 들어, 만약 intermediate model을 사용하여 정의한 custom들이 **(model1, model2)**의 유일성을 보장하지 않는다면, **remove()** 호출은 어떤 어떤 intermediate model의 instance를 삭제해야 하는지 충분한 정보를 제공하지 않는다:
+**remove()** method도 비슷한 이유로 사용 불가능합니다. 예를 들어, 만약 중간 model의  `(model1, model2)`의 유일성이 보장되지 않는다면, **remove()** 호출은 중간 model의 어떤 instance를 삭제해야 하는지 충분한 정보를 제공하지 않기 때문입니다:
 
     >>> Membership.objects.create(person=ringo, group=beatles,
     ...			date_joined=date(1968, 9, 4),
@@ -381,7 +382,7 @@ pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있�
     >>> # This will not work because it cannot tell which membership to remove
     >>> beatles.members.remove(ringo)
 
-그러나, **clear()** method는 모든 many-to-many relationships의 instance들을 삭제하기 위해 사용할 수 있다:
+그러나 **clear()** method는 모든 many-to-many relationships의 instance들을 삭제하기 위해 사용할 수 있습니다:
 
     >>> # Beatles have broken up
     >>> beatles.members.clear()
@@ -389,13 +390,13 @@ pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있�
     >>> Membership.objects.all()
     <QuerySet []>
 
-일단 너가 너의 intermediate model의 instance를 생성하여 many-to-many relationship을 형성했다면, 너는 queries를 볼 수 있다. 평범한 many-to-many relationship과 마찬가지로, 너는 many-to-many로 연결된 model들의 attribute들을 이용하여 query할 수 있다.
+일단 중간 model의 instance를 생성하여 many-to-many relationship을 형성했다면, queries를 통해 볼 수 있습니다. 평범한 many-to-many relationship과 마찬가지로, many-to-many로 연결된 model들의 attribute들을 이용하여 query할 수 있습니다.
 
     # Find all the groups with a member whose name starts with 'Paul'
     >>> Group.objects.filter(members__name__startswith='Paul')
     <QuerySet [<Group: The Beatles>]>
 
-너는 또한 intermediate model들을 attributes들을 이용하여 query 할 수 있다.
+또한 중간 model들의 attributes들을 이용하여 query 할 수 있다.
 
     # Find all the members of the Beatles that joined after 1 Jan 1961
     >>> Person.objects.filter(
@@ -403,7 +404,7 @@ pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있�
     ...			membership__date_joined__gt=date(1961,1,1))
     <QuerySet [<Person: Ringo Starr]>
 
-만약 너가 membership의 정보들에 접근할 필요가 있으면 너는 **Membership** model을 직접적으로 querying함으로써 할 수 있다:
+만약 membership의 정보들에 접근해야 한다면 **Membership** model을 직접적으로 query 할 수 있습니다:
 
     >>> ringos_membership = Membership.objects.get(group=beatles, person=ringo)
     >>> ringos_membership.date_joined
@@ -423,29 +424,29 @@ pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있�
 
 **One-to-one relationships**
 
-one-to-one relationship을 정의하기 위해, **`OneToOneField`**를 사용해라. 너는 어느 다른 **Field** type처럼 이용하면 된다: 너의 model의 class attribute로 추가해라.
+one-to-one relationship을 정의하기 위해, **OneToOneField**를 사용하십시오. 어느 다른 **Field** type처럼 이용하면 됩니다: model의 class attribute로 추가하십시오.
 
-이것은 한 object가 다른 object를 "extends" 하고 있을 때 그 object의 primary key에서 가장 유용하다.
+이것은 한 객체가 다른 객체를 "extends" 하고 있을 때 객체의 primary key에서 사용하면 가장 유용합니다.
 
-**`OneToOneField`**는 지정된 위치의 argument를 요구한다: 모델과 relate된 class를 지정하는 것이다.
+**OneToOneField**는 지정된 위치의 필수 argument를 요구합니다: 모델과 relate된 class를 지정합니다.
 
-예를 들어, 만약 너가 "places"라는 database를 만들고 있다면, 너는 address, phone number 등과 같은 평범한 것들을 데이터 베이스에 포함할 것이다. 그리고 나서, 너가 그 place들 위에 restaurant들의 데이터 베이스를 세우고 싶다면, **Restaurant** model에 그 fields들을 복제하는 것 대신에, **Restaurant**가 **Place**로 **`OneToOneField`**를 갖게 만들어 주면 된다(왜냐하면 reataurant "is a" place이기 때문이다; 사실, 이것을 다루기 위해 전형적으로 inheritance를 사용하는데, 이것은 암묵적으로 one-to-one relation을 갖는다).
+예를 들어, 만약 "places"라는 데이터베이스를 만들고 있다면, address, phone number 등과 같이 평범한 내용들을 데이터 베이스에 포함할 것이다. 그리고 나서, 그 place들 위에 restaurant들의 데이터 베이스를 세우고 싶다면, **Restaurant** model에 그 fields들을 붙여넣는 것 대신에, **Restaurant**가 **Place**로 **OneToOneField**를 갖게 만들어 주면 됩니다(왜냐하면 reataurant "is a" place이기 때문이다; 사실, 이을 위해 전형적으로 상속을 사용하는데, 이것은 암묵적으로 one-to-one relation을 갖습니다).
 
-**`ForeignKey`** 와 함께 `recursive relationship`은 정의될 수 있고 `references to as-yet undefined model`도 만들어 질 수 있다.
+**ForeignKey** 와 함께 `recursive relationship`은 정의될 수 있고 `references to as-yet undefined model`도 만들어 질 수 있습니다.
 
 - **See also**
 
-    전체 예시를 보기 위해 `One-to-one relationship model example`을 참고하라.
+    전체 예시를 보기 위해 `One-to-one relationship model example`을 참고하십시오.
 
-**`OneToOneField`**는 또한 optional `**parent_link**` argument를 사용할 수 있다.
+**OneToOneField**는 또한 optional **parent_link** argument를 사용할 수 있습니다.
 
-**`OneToOneField`** class들은 자동적으로 model의 primary key가 되곤 했다. 이는 더 이상 사실이 아니다(너가 직접 `**primary_key**` argument들을 넘겨주어도 말이다). 그러므로, 이제 하나의 model에서 OneToOneField type의 다양한 field를 갖는 것이 가능하다.
+**OneToOneField** class들은 자동적으로 model의 primary key에 연결되곤 했습니다. 하지만 더 이상 그렇지 않습니다(직접 **primary_key** argument들을 넘겨주어도 말입니다). 그러므로, 이제 하나의 model에서 OneToOneField type의 다양한 field를 갖는 것이 가능합니다.
 
----
+
 
 ## Models across files
 
-한 model에서 다른 app에 있는 model로 relate을 하는 것은 완벽히 괜찮다. 이를 하기 위해서, 너의 모델이 정의되어 있는 곳 파일 가장 위에 related model을 import해야 한다. 이후, 필요한 곳 어디든지 그 다른 model class를 참조하면 된다. 예를 보자:
+한 model에서 다른 app에 있는 model로 relate를 할 수 있습니다. 이를 위해 당신의 모델이 정의되어 있는 파일 가장 위에 related model을 import해야 합니다. 이후, 필요한 곳 어디든지 그 다른 model class를 참조하면 됩니다. 예를 보십시오:
 
     from django.db import models
     from geography.models import ZipCode
@@ -459,37 +460,37 @@ one-to-one relationship을 정의하기 위해, **`OneToOneField`**를 사용해
     		null=True,
     	)
 
----
+
 
 ## Field name restrictions
 
-Django는 model field 이름에 단 두 가지 제약만이 있다. 
+Django는 model field 이름에 단 두 가지 제약만이 있습니다. 
 
-1. filed name은 Python reserved word가 될 수 없다. 왜냐하면 이는 Python syntax error를 발생시킬 것이다. 예시를 보자:
+1. field name은 Python reserved word가 될 수 없습니다. 왜냐하면 이는 Python syntax error를 발생시킬 것입니다. 예시를 보십시오:
 
         class Example(models.Model):
         	pass = models.IntegerField() # 'pass' is a reserved word!
 
-2. field name은 두 개 이상의 underscore을 가질 수 없는데, 이는 Django의 query lookup syntax words이기 때문이다. 예시를 보자:
+2. field name은 두 개 이상의 underscore을 가질 수 없는데, 이는 Django의 query lookup syntax words이기 때문입니다. 예시를 보십시오:
 
         class Example(models.Model):
         	foo__bar = models.IntegerField() # 'foo__bar' has two underscores!
 
-이러한 제약 사항들은 해결될 수 있는데, 왜냐하면 너의 field name은 너의 database column 이름과 꼭 어울릴 필요가 없기 때문이다. `db_column` option을 참조하여라.
+이러한 제약 사항들은 피해갈 수 있습니다. 왜냐하면 field name은 database column 이름과 꼭 같을 필요가 없기 때문입니다. `db_column` option을 참조하십시오.
 
-SQL reserved words, 예를 들어 **join**, **where** 또는 **select**는 model field name으로 사용할 수 있는데, 왜냐하면 Django는 기본 SQL query에 있는 모든 database table 이름과 column 이름들을 직접적으로 사용하지 때문이다. 그것은 너의 특정 database 엔진의 quoting syntax를 사용한다.
+SQL reserved words, 예를 들어 **join**, **where** 또는 **select**는 model field name으로 사용할 수 있는데, 왜냐하면 Django는 기본 SQL query에 있는 모든 database table 이름과 column 이름들을 직접적으로 사용하지 않기 때문입니다. 그것은 너의 특정 database 엔진의 quoting syntax를 사용합니다.
 
----
+
 
 ## Custom field types
 
-만약 기존에 존재하는 model fields들이 너의 목적에 맞게 사용할 수 없다면, 또는 너가 일반적으로 사용되지 않는 database column type을 이용하려면 너만의 자체 field class를 만들 수 있다. 고유의 field를 만드는 전체 방법은 `Writing custom model fields`에 나와 있다.
+만약 기존의 model fields들을 목적에 맞게 사용할 수 없다면, 또는 일반적으로 사용되지 않는 database column type을 이용하려면 자체적인 field class를 만들 수 있다. 고유의 field를 만드는 전체 방법은 `Writing custom model fields`에 나와 있습니다.
 
 ---
 
 # Meta options
 
-inner **class Meta**를 다음과 같이 사용하여 너의 model에게 metadata를 줄 수 있다:
+inner **class Meta**를 다음과 같이 사용하여 model에게 metadata를 줄 수 있습니다:
 
     from django.db import models
     
@@ -500,9 +501,9 @@ inner **class Meta**를 다음과 같이 사용하여 너의 model에게 metadat
     		ordering = ["horn_length"]
     		verbose_name_plural = "oxen"
 
-Model의 metadata는 "field가 아닌 모든 것"이다. 예를 들어 ordering options(**ordering**), database table name(**db_table**), 또는 사람이 읽을 수 있는 복수형 또는 단수형 이름들(**verbose_name** 그리고 **verbose_name_plural**)이 있다. 모두 필수는 아니고 **class Meta**를 model에 추가하는 것은 전적으로 optional이다.
+Model의 metadata는 "field가 아닌 모든 것"입니다. 예를 들어 ordering options(**ordering**), database table name(**db_table**), 또는 사람이 읽을 수 있는 복수형 또는 단수형 이름들(**verbose_name** 그리고 **verbose_name_plural**)이 있습니다. 모두 필수는 아니고 **class Meta**를 model에 추가하는 것은 전적으로 optional입니다.
 
-**Meta** option에 대한 전체 목록은 model option reference에서 확인 할 수 있다.
+**Meta** option에 대한 전체 목록은 model option reference에서 확인 할 수 있습니다.
 
 ---
 
@@ -510,21 +511,21 @@ Model의 metadata는 "field가 아닌 모든 것"이다. 예를 들어 ordering 
 
 **objects**
 
-model의 가장 중요한 attribute는 **`Manager`**이다. 이는 interface인데 database query operation들이 이를 통해 Django model로 제공되고 database로부터 `retrieve the instances` 하는데 사용된다. 만약 custom **Manager**가 정의되지 않는다면, 초기 이름은 **`objects`**이다. Managers은 model instance가 아니라, 단지 model class를 통해서만 접근 할 수 있다.
+model의 가장 중요한 attribute는 **Manager**입니다. 이는 interface인데 database query operation들이 이를 통해 Django model로 제공되고 database로부터 `retrieve the instances` 하는데 사용됩니다. 만약 custom **Manager**가 정의되지 않는다면, 초기 이름은 **objects**입니다. Managers은 model instance가 아니라, 단지 model class를 통해서만 접근 할 수 있습니다.
 
 ---
 
 # Model methods
 
-너의 obejcts를 위한 custom "row-leve" functionality를 model에 추가하기 위해 custom method를 정의해라. `**Manager**` mehods들은 "table-wide" 관련 작업들을 하기 위해 만들어진 반면, model methods는 특정 model instance에 대해 작동한다.
+객체를 위한 custom "row-level" 기능을 model에 추가하기 위해 custom method를 정의하십시오. **Manager** mehods들은 "table-wide" 관련 작업들을 하기 위해 만들어진 반면, model methods는 특정 model instance에 대해 작동합니다.
 
-이는 business logic을 한 곳에 유지하기 위한 값진 기술이다 - the model
+이는 business logic을 한 곳(model)에 유지하기 위한 값진 기술입니다.
 
-예를 들어, 이 model은 몇 개의 custom method를 갖고 있다:
+예를 들어, 다음 model은 몇 개의 custom method를 갖고 있습니다:
 
     from django.db import models
     
-    class Person(models.Moel):
+    class Person(models.Model):
     	first_name = models.CharField(max_length=50)
     	last_name = models.CharField(max_length=50)
     	birth_date = models.DateField()
@@ -544,29 +545,29 @@ model의 가장 중요한 attribute는 **`Manager`**이다. 이는 interface인�
     		"Returns the person's full name."
     		return '%s %s' % (self.first_name, self.last_name)
 
-이 예시의 마지막 method는 `property`이다.
+이 예시의 마지막 method는 `property`입니다.
 
-model i`nstance reference`에는 `각각의 model에게 자동적으로 주어진 mothod`들의 전체 리스트가 있다. 너는 이들을 override할 수 있다 - `overriding predefined model methods`를 참고하라 - 그러나 너가 거의 항상 정의해야 할 몇 가지 method들이 있다:
+model `instance reference`에는 `각각의 model에게 자동적으로 주어진 mothod`들의 전체 리스트가 있습니다. 이들을 override할 수 있습니다 - `overriding predefined model methods`를 참고하십시오 - 그러나 거의 항상 정의해야 할 몇 가지 method들이 있습니다:
 
 **__str__()**
 
-모든 object의 문자 표현을 반환하는 Python의 "magic method"이다. model instance가 순수 string으로 표현되어야 할 때마다 Python과 Django이 이를 호출할 것이다. 제일 알아 두어야 할 것은, 이는 너가 대화형 console이나 admin에 obejct를 표시해야 할 때 일어난다.
+모든 object의 문자 표현을 반환하는 Python의 "magic method"이다. model instance가 순수 string으로 표현되어야 할 때마다 Python과 Django이 이를 호출할 것입니다. 제일 알아 두어야 할 것은, 이는 대화형 console이나 admin에 obejct를 표시해야 할 때 일어납니다.
 
-너는 항상 이 mothod를 정의하고 싶어할 것이다; 초기 값이 전혀 도움이 되지 않기 때문이다.
+항상 이 mothod를 정의하고 싶어할 것입니다; 초기 값이 전혀 도움이 되지 않기 때문입니다.
 
 **get_absolute_url()**
 
-이는 Django에게 한 object에 대해 URL을 계산하라 말한다. Django는 이를 그것의 admin interface 안에서 사용하고 한 object의 URL을 알아내야 할 때 필요하다.
+이는 Django에게 한 object에 대해 URL을 어떻게 계산할지 알려줍니다. Django는 이를 그것의 admin interface 안에서 사용하거나 한 객체의 URL을 알아내야 할 때 필요합니다.
 
 object를 고유하게 식별하는 URL을 가진 object는 이 method를 정의해야 합니다.
 
 ## Overriding predefined model methods
 
-customize 할 database 동작을 encapsulate하고 있는 또 다른 `model method` 집합이 있다. 특히 너는 **`save()`**와 **`delete()`**가 동작하는 방법을 종종 바꾸고 싶을 것이다.
+데이터 베이스 동작을 encapsulate하고 있는 또 다른 종류의 `model method` 집합이 있고, 이를 customize하고 싶을 것입니다. 특히 **save()**와 **delete()**가 동작하는 방법을 종종 바꾸고 싶을 것입니다.
 
-너는 자유롭게 이 methods(그리고 다른 model methods) 역시 override할 수 있고 동작을 바꿀 수 있다.
+자유롭게 이 methods(그리고 다른 model methods) 역시 override할 수 있고 동작을 바꿀 수 있습니다.
 
-내장 method들을 override하는 전형적인 경우는 너가 object를 저장할 때마다 어떤 일이 일어나게 하고 싶을 때이다. 예시를 보자(`**save()**`에서 받아들이는 parameter의 문서를 참조하라):
+내장 method들을 override하는 전형적인 경우는 object를 저장할 때마다 어떤 일이 일어나게 하고 싶을 때 입니다. 예시를 보십시오( **save()**에서 받아들이는 parameter의 문서를 참조하라):
 
     from django.db import models
     
