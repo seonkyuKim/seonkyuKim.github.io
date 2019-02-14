@@ -52,63 +52,67 @@ string-based 와 non-string-based field 에서 forms에 빈값을 넣는 것을 
 
 
 
-## Choices
+## choices
 
 **Field.choices**
 
 field에 choices로 사용하기 위해서는 두 items의 iterables 이거나 이를 포함하고 있는 iterable이어야 합니다(e.g. [(A, B), (A, B), ...]). 만약 choice가 주어진다면, 그들은 [model validation](https://docs.djangoproject.com/en/2.1/ref/models/instances/#validating-objects)에 의해 실행되고, text field가 아닌, select box에 선택지가 담긴 기본 위젯 form이 실행 될 것입니다.
 
 각 튜플에서 첫번째 요소는 model에 저장되는 실질적 값이고, 두 번째 요소(element)는 사람이 읽게 되는 이름입니다. 예시:
-
-    YEAR_IN_SCHOOL_CHOICES = (
+```python
+YEAR_IN_SCHOOL_CHOICES = (
         ('FR', 'Freshman'),
         ('SO', 'Sophomore'),
         ('JR', 'Junior'),
         ('SR', 'Senior'),
     )
+```
 
 일반적으로 model class 안에 choices를 각 값에 대해서 변함 없게 알맞은 이름을 정의하는 가장 좋은 방법은 다음과 같습니다.
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Student(models.Model):
-        FRESHMAN = 'FR'
-        SOPHOMORE = 'SO'
-        JUNIOR = 'JR'
-        SENIOR = 'SR'
-        YEAR_IN_SCHOOL_CHOICES = (
-            (FRESHMAN, 'Freshman'),
-            (SOPHOMORE, 'Sophomore'),
-            (JUNIOR, 'Junior'),
-            (SENIOR, 'Senior'),
-        )
-        year_in_school = models.CharField(
-            max_length=2,
-            choices=YEAR_IN_SCHOOL_CHOICES,
-            default=FRESHMAN,
-        )
+class Student(models.Model):
+    FRESHMAN = 'FR'
+    SOPHOMORE = 'SO'
+    JUNIOR = 'JR'
+    SENIOR = 'SR'
+    YEAR_IN_SCHOOL_CHOICES = (
+        (FRESHMAN, 'Freshman'),
+        (SOPHOMORE, 'Sophomore'),
+        (JUNIOR, 'Junior'),
+        (SENIOR, 'Senior'),
+    )
+    year_in_school = models.CharField(
+        max_length=2,
+        choices=YEAR_IN_SCHOOL_CHOICES,
+        default=FRESHMAN,
+    )
     
-        def is_upperclass(self):
-            return self.year_in_school in (self.JUNIOR, self.SENIOR)
+    def is_upperclass(self):
+        return self.year_in_school in (self.JUNIOR, self.SENIOR)
+```
 
 choices list를 model class의 외부에 정의하여 참조하게 할 수 있지만, model class 내부에 각 choice를 정의하는 것은 이것을 사용한 class에 모든 정보를 보관할 수 있다는 장점이 있습니다. 그리고 choices를 쉽게 참조 할 수 있게 합니다.(e.g. **Student** 모델이 import 된 어느 곳에서라도 **Student.SOPHOMORE**이 작동할 것입니다)
 
 사용 가능한 choices를 체계화 하기 위한 목적으로 그룹에 이름을 지을 수 있습니다.
 
-    MEDIA_CHOICES = (
-        ('Audio', (
-                ('vinyl', 'Vinyl'),
-                ('cd', 'CD'),
-            )
-        ),
-        ('Video', (
-                ('vhs', 'VHS Tape'),
-                ('dvd', 'DVD'),
-            )
-        ),
-        ('unknown', 'Unknown'),
-    )
-
+```python
+MEDIA_CHOICES = (
+    ('Audio', (
+            ('vinyl', 'Vinyl'),
+            ('cd', 'CD'),
+        )
+    ),
+    ('Video', (
+            ('vhs', 'VHS Tape'),
+            ('dvd', 'DVD'),
+        )
+    ),
+    ('unknown', 'Unknown'),
+)
+```
 각 tuple의 첫 번째 요소는 그룹을 나타낼 이름입니다. 두 번째 요소는 두 값의 iterable로, 저장되는 값과 사람이 읽을 수 있는 값으로 묶여진 tuple입니다. 하나의 list를 사용하여 그룹화 된 선택지들과 그룹화 되지 않은 선택지들을 합칠 수 있습니다.(예를 들면, 위에서의 unknown option들은 그룹화 되지 않은 선택지입니다)
 
 choices 을 가진 model field 별로, field의 현재 값에 대응되는 사람에게 보여지는 이름을 받아오는 method를 추가합니다. 더 자세한 것은 database API documentation 안에 있는 `get_FOO_display()`를 참고하십시오.
@@ -151,12 +155,14 @@ field에 사용할 database column의 이름입니다. 만약 주어지지 않�
 
 필드에 대한 기본 값입니다. 이는 한 값이나 callable 객체가 될 수도 있습니다. 만약 callable 객체라면 새로운 객체가 생성될 때마다 호출될 것입니다.
 
-default는 변경 가능한 객체(model instance, list, set 등)일 수 없으며, 이 객체의 동일한 인스턴스에 대한 참조는 모든 새로운 모델 인스턴스에서 기본 값으로 사용될 것입니다. 대신에, callable로 원하는 default를 wrap할 수 있습니다. 예를 들어, **JSONField**에 대해 default **dict**을 명시하고 싶다면, 다음 함수를 사용하십시오:
-
-    def contact_default():
-    	return {"email": "to1@example.com"}
+default는 변경 가능한 객체(model instance, list, set 등)일 수 없으며, 이 객체의 동일한 인스턴스에 대한 참조는 모든 새로운 모델 인스턴스에서 기본 값으로 사용될 것입니다. 대신에, callable로 원하는 default를 wrap할 수 있습니다. 예를 들어, **JSONField**에 대해 default **dict**을 명시하고 싶다면, 다음 함수를 사용하십시오
+:
+```python
+def contact_default():
+    return {"email": "to1@example.com"}
     
-    contact_info = FSONField("ContactInfo", default=contact_default)
+contact_info = FSONField("ContactInfo", default=contact_default)
+```
 
 **default**와 같은 field option으로 **lamda**는 사용할 수 없습니다. 왜냐하면 이들은 Migrations로 serialized되지 않기 때문입니다. 해당 설명서를 참고하십시오.
 
@@ -196,7 +202,9 @@ default(기본 값)은 새로운 모델 인스턴스가 생기고, 해당 필드
 
 이 값은 자동으로 생성된 폼에서 HTML을 **help_text**에 원하는 대로 포함할 수 있게 해줍니다. 다음은 예시입니다:
 
-    help_text="Please use the following format: <em>YYYY-MM-DD</em>."
+```html
+help_text="Please use the following format: <em>YYYY-MM-DD</em>."
+```
 
 일반 텍스트와 **django.utils.html.escape()**를 사용하여 HTML 특수 문자를 사용하지 않을 수 있습니다. cross-site scripting attack를 피하기 위해서 신뢰할 수 없는 사용자로부터 온 help text를 확실히 escape 해야 합니다.
 

@@ -24,21 +24,25 @@ model은 데이터에 대한 하나의, 결정적인 정보입니다. 모델은 
 
 다음 예시는 **first_name**과 **last_name**을 갖고 있는 **Person** model입니다:
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Person(models.Model):
+class Person(models.Model):
     	first_name = models.CharField(max_length=30)
     	last_name = models.CharField(max_length=30)
+```
 
 **first_name**과 **last_name**은 model의 `field`입니다. 각각의 field는 class attribute로 구체화되며, 각각의 attribute는 하나의 database column으로 매핑됩니다.
 
 위의 **Person** model은 다음과 같은 데이터베이스 테이블을 생성합니다:
 
-    CREATE TABLE myapp_person (
+```sql
+CREATE TABLE myapp_person (
     	"id" serial NOT NULL PRIMARY KEY,
     	"first_name" varchar(30) NOT NULL,
     	"last_name" varchar(30) NOT NULL
-    );
+);
+```
 
 Some technical notes:
     
@@ -55,11 +59,13 @@ models를 정의한 후, Django의 settings file을 수정하여 앞으로 그 m
 
 예를 들어, 만약 당신의 application의 models가 **myapp.models** module 안에 있다면 (**manage.py startapp** 명령어를 사용하여 만든 application package structure 안에 있다면), **INSTALLED_APPS**는 다음과 같습니다:
 
-    INSTALLED_APPS = [
+```python
+INSTALLED_APPS = [
     	#...
     	'myapp',
     	#...
-    ]
+]
+```
 
 새로운 app들을 **INSTALLED_APPS**에 추가한 뒤, **manage.py makemigrations**를 이용하여 부분적 migrations를 만든 후, **manage.py migrate**를 꼭 실행하도록 하십시오.
 
@@ -71,18 +77,20 @@ models를 정의한 후, Django의 settings file을 수정하여 앞으로 그 m
 
 예시 :
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Musician(models.Model):
+class Musician(models.Model):
     	first_name = models.CharField(max_length=50)
     	last_name = models.CharField(max_length=50)
     	instrument = models.CharField(max_length=100)
-    
-    class Album(models.Model):
+      
+class Album(models.Model):
     	artist = models.ForeignKey(Musician, on_delete=models.CASCADE)
     	name = models.CharField(max_length=100)
     	release_date = models.DateField()
     	num_starts = models.IntegerField()
+```
 
 ## Field types
 
@@ -120,35 +128,40 @@ blank는 null과 다릅니다. null은 database-related인 반면, blank는 vali
 
 choices list의 예시는 다음과 같습니다:
 
-    YEAR_IN_SCHOOL_CHOICES = (
+```python
+YEAR_IN_SCHOOL_CHOICES = (
     	('FR', 'Freshman'),
     	('SO', 'Sophomore'),
     	('JR', 'Junior'),
     	('SR', 'Senior'),
     	('GR', 'Graduate'),
-    )
+)
+```
 
 각각의 tuple의 첫 번째 요소는 database에 저장되는 값입니다. 두 번째 요소는 field의 form widget에 나타나는 값(display value)입니다.
 
 model instance가 주어졌을 때, **choices**를 갖고 있는 field에서 표시되는 값은 **get_F00_display()** method를 이용하여 알 수 있습니다. 예시를 보십시오:
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Person(models.Model):
-    	SHIRT_SIZES = (
-    		('S', 'Small'),
-    		('M', 'Medium'),
-    		('L', 'Large'),
-    	)
-    	name = models.CharField(max_length=60)
-    	shirt_size = models.CharField(max_length=1, choices=SHIRT_SIZES)
-
-    >>> p = Person(name="Fred Flintsone", shirt_size='L')
-    >>> p.save()
-    >>> p.shirt_size
-    'L'
-    >>> p.get_shirt_size_display()
-    'Large'
+class Person(models.Model):
+    SHIRT_SIZES = (
+        ('S', 'Small'),
+        ('M', 'Medium'),
+        ('L', 'Large'),
+    )
+    name = models.CharField(max_length=60)
+    shirt_size = models.CharField(max_length=1, choices=SHIRT_SIZES)
+```
+```shell
+>>> p = Person(name="Fred Flintsone", shirt_size='L')
+>>> p.save()
+>>> p.shirt_size
+'L'
+>>> p.get_shirt_size_display()
+'Large'
+```
 
 **default**
 
@@ -166,16 +179,19 @@ form widget에 표시될 추가적인 도움말 입니다. 만약 폼에서 해�
 
 primary key field는 읽을 수만 있습니다. 만약 기존 object의 primary key 값을 변경한다면, 기존 object 옆에 새로운 object가 생성될 것입니다. 예시를 보십시오:
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Fruit(models.Model):
-    	name = models.CharField(max_length=100, primary_key=True)
-
-    >>> fruit = Fruit.objects.create(name='Apple')
-    >>> fruit.name = 'Pear'
-    >>> fruit.save()
-    >>> Fruit.objects.values_list('name', flat=True)
-    <QuerySet ['Apple', 'Pear']>
+class Fruit(models.Model):
+    name = models.CharField(max_length=100, primary_key=True)
+```
+```shell
+>>> fruit = Fruit.objects.create(name='Apple')
+>>> fruit.name = 'Pear'
+>>> fruit.save()
+>>> Fruit.objects.values_list('name', flat=True)
+<QuerySet ['Apple', 'Pear']>
+```
 
 **unique**
 
@@ -189,7 +205,9 @@ primary key field는 읽을 수만 있습니다. 만약 기존 object의 primary
 
 초기 값으로, Django는 각각의 model에 다음과 같은 field를 생성합니다:
 
-    id = models.AutoField(primary_key=True)
+```python
+id = models.AutoField(primary_key=True)
+```
 
 이는 자동적으로 증가하는 (auto-incrementing) primary key입니다.
 
@@ -206,25 +224,31 @@ primary key field는 읽을 수만 있습니다. 만약 기존 object의 primary
 
 이 예시에서 verbose name은 "**person's first name**"입니다:
 
-    first_name = models.CharField("person's first name", max_length=30)
+```python
+first_name = models.CharField("person's first name", max_length=30)
+```
 
 이 예시에서 verbose name은 "**first name**"입니다:
 
-    first_name = models.CharField(max_length=30)
+```python
+first_name = models.CharField(max_length=30)
+```
 
 **ForeignKey**, **ManyToManyField**와 **OneToOneField**는 첫 번째 argument로 model class가 필요하기 때문에 **verbose_name** keyword argument를 사용합니다.
 
-    poll = models.ForeignKey(
-    	Poll,
-    	on_delete=models.CASCADE,
-    	verbose_name="the related poll",
-    )
-    sites = models.ManyToManyField(Site, verbose_name="list of sites")
-    place = models.OneToOneField(
-    	Place,
-    	on_delete=models.CASCADE,
-    	verbose_name="related place",
-    )
+```python
+poll = models.ForeignKey(
+    Poll,
+    on_delete=models.CASCADE,
+    verbose_name="the related poll",
+)
+sites = models.ManyToManyField(Site, verbose_name="list of sites")
+place = models.OneToOneField(
+    Place,
+    on_delete=models.CASCADE,
+    verbose_name="related place",
+)
+```
 
 관습적으로 **verbose_name**의 첫 글자는 대문자를 쓰지 않습니다. Django가 자동적으로 첫 번째 글자를 대문자로 바꾸어주기 때문입니다.
 
@@ -242,25 +266,29 @@ many-to-one relationship을 정의하기 위해, **django.db.models.ForeignKey**
 
 예를 들어, **Car** model이 **Manufacturer**을 갖고 있다면 - 즉, **Manufacturer**은 다양한 cars를 만들지만 각각의 **Car**는 단 하나의 **Manufacturer**를 갖고 있다 - 다음과 같이 할 수 있습니다:
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Manufacturer(models.Model):
-    	# ...
-    	pass
+class Manufacturer(models.Model):
+    # ...
+    pass
     
-    class Car(models.Model):
-    	manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
-    	# ...
+class Car(models.Model):
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
+    # ...
+```
 
 또한 `recursive relationship`(자기 자신에게 many-to-one relationship을 갖고 있는 object)을 만들 수 있고 `아직 정의되지 않은 model에게 relationship`을 만들 수 있습니다; 자세한 사항은 `model field reference`를 참고하십시오.
 
 필수적인 것은 아니지만, **ForeignKey field**의 이름(위의 예에서는 **manufacturer**)은 소문자의 model 이름을 사용하는 것이 좋습니다. 물론, 원하는 대로 field 이름을 정해도 됩니다. 예시를 보십시오:
 
-    class Car(models.Model):
-    	company_that_makes_it = models.ForeignKey(
-    		Manufacturer,
-    		on_delete=models.CASCADE,
-    	)
+```python
+class Car(models.Model):
+    company_that_makes_it = models.ForeignKey(
+        Manufacturer,
+        on_delete=models.CASCADE,
+    )
+```
 
 **See also**<br><br>**ForeignKey** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있습니다. 이 옵션들은 relationship이 어떻게 작동할지를 규정해 줍니다; 모두 optional입니다.<br>backward-related objects에 접근하는 방법에 대해서는 `Following relationships backward example`을 참고하십시오.<br>sample code를 보고 싶다면 `Many-to-one relationship model example`을 참고하십시오.
 {: .notice--info}
@@ -276,15 +304,17 @@ Many-to-many relationships를 사용하기 위해서는, **ManyToManyField**를 
 
 예를 들어, **Pizza** 가 다양한 **Topping** objects를 갖고 있다면 - 즉, 한 **Topping**이 다양한 pizzas에 있을 수 있고 각각의 **Pizza**도 다양한 toppings를 가질 수 있다면 - 다음과 같이 이를 나타낼 수 있습니다:
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Topping(models.Model):
-    	# ...
-    	pass
+class Topping(models.Model):
+    # ...
+    pass
     
-    class Pizza(models.Model):
-    	# ...
-    	toppings = models.ManyToManyField(Topping)
+class Pizza(models.Model):
+    # ...
+    toppings = models.ManyToManyField(Topping)
+```
 
 **ForeignKey**와 마찬가지로, recursive relationship(자기 자신에게 many-to-many relationship을 갖고 있는 객체)를 만들 수 있고 `아직 정의되지 않은 model에게 relationship`을 만들 수 있습니다.
 
@@ -309,26 +339,28 @@ pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있�
 
 이러한 상황에서, Django에서는 many-to-many relationship을 관리하는 model을 명시할 수 있습니다. 또한 이 intermidate model에 추가적인 field들을 넣을 수 있습니다. 중간 테이블 역할을 할 model을 알려주는  **through** argument를 이용하여 중간 model은 **ManyToManyField**와 연결될 수 있습니다. 우리의 musician 예시는 다음 코드와 같이 쓸 수 있습니다:
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Person(models.Model):
-    	name = models.CharField(max_length=128)
+class Person(models.Model):
+    name = models.CharField(max_length=128)
     	
-    	def __str__(self):
-    		return self.name
+    def __str__(self):
+        return self.name
     
-    class Group(models.Model):
-    	name = models.CharField(max_length=128)
-    	members = models.ManyToManyField(Person, through='Membership')
+class Group(models.Model):
+    name = models.CharField(max_length=128)
+    members = models.ManyToManyField(Person, through='Membership')
     	
-    	def __str__(self):
-    		return self.name
+    def __str__(self):
+        return self.name
     
-    class Membership(models.Model):
-    	person = models.ForeignKey(Person, on_delete=models.CASCADE)
-    	group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    	date_joined = models.DateField()
-    	invite_reason = models.CharField(max_length=64)
+class Membership(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    date_joined = models.DateField()
+    invite_reason = models.CharField(max_length=64)
+```
 
 중간 model을 만들 때는 foreign key를 이용하여 many-to-many relationship에 포함될 model들을 명시적으로 지정해주어야 합니다. 이 명시적 선언은 두 model들이 어떻게 relate되는지 정의합니다.
 
@@ -341,80 +373,96 @@ pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있�
 
 이제 중간 model(예시의 경우 **Membership**)을 이용하기 위한 **ManyToManyField** 준비 작업을 마쳤고, many-to-many relationship을 사용할 준비가 되었습니다. intermediate model의 instances를 만들어 사용할 수 있습니다:
 
-    >>> ringo = Person.objects.create(name="Ringo Starr")
-    >>> paul = Person.objects.create(name="Paul McCartney")
-    >>> beatles = Group.objects.create(name="The Beatles")
-    >>> m1 = Membership(person=ringo, group=beatles,
-    ...			date_joined=date(1962, 8, 16),
-    ...	 	 	invite_reason="Needed a new drummer.")
-    >>> m1.save()
-    >>> beatles.members.all()
-    <QuerySet [<Person: ringo Starr>]>
-    >>> ringo.group_set.all()
-    <QuerySet [<Group: The Beatles>]>
-    >>> m2 = Membership.objects.create(person=paul, group=beatles,
-    ...			date_joined=date(1960, 8, 1),
-    ...			invite_reason="Wanted to form a band.")
-    >>> beatles.memebers.all()
-    <QuerySet [<Person: Ringo starr>, <Person: Paul McCartney>]>
+```shell
+>>> ringo = Person.objects.create(name="Ringo Starr")
+>>> paul = Person.objects.create(name="Paul McCartney")
+>>> beatles = Group.objects.create(name="The Beatles")
+>>> m1 = Membership(person=ringo, group=beatles,
+...			date_joined=date(1962, 8, 16),
+...	 	 	invite_reason="Needed a new drummer.")
+>>> m1.save()
+>>> beatles.members.all()
+<QuerySet [<Person: ringo Starr>]>
+>>> ringo.group_set.all()
+<QuerySet [<Group: The Beatles>]>
+>>> m2 = Membership.objects.create(person=paul, group=beatles,
+...			date_joined=date(1960, 8, 1),
+...			invite_reason="Wanted to form a band.")
+>>> beatles.memebers.all()
+<QuerySet [<Person: Ringo starr>, <Person: Paul McCartney>]>
+```
 
 보통의 many-to-many field과는 다르게, relationship을 만들기 위해서 **add()**, **create()**, 또는 **set()** 을  사용할 수 없습니다.
 
-    >>> # The following statements will not work
-    >>> beatles.members.add(john)
-    >>> beatles.members.create(name="George Harrison")
-    >>> beatles.members.set([john, paul, ringo, george])
+```shell
+>>> # The following statements will not work
+>>> beatles.members.add(john)
+>>> beatles.members.create(name="George Harrison")
+>>> beatles.members.set([john, paul, ringo, george])
+```
 
 왜 그럴까요? 단순히 **Person**과 **Group**사이의 relationship을 만들 수 없습니다 - 왜냐하면 **Membership** model이 필요로 하는 모든 세부 사항들을 명시해 주어야 하기 때문입니다. 단순히 **add**, **create** 그리고 assignment call으로는 이러한 추가적인 세부 사항들을 알려줄 방법이 없습니다. 결과적으로, 이들 함수는 중간 model을 이용하는 many-to-many relationship에서 사용 불가능합니다. 이런 종류의 relationship을 만드는 유일한 방법은 intermeidate model의 instance들을 생성하는 것입니다.
 
 **remove()** method도 비슷한 이유로 사용 불가능합니다. 예를 들어, 만약 중간 model의  `(model1, model2)`의 유일성이 보장되지 않는다면, **remove()** 호출은 중간 model의 어떤 instance를 삭제해야 하는지 충분한 정보를 제공하지 않기 때문입니다:
 
-    >>> Membership.objects.create(person=ringo, group=beatles,
-    ...			date_joined=date(1968, 9, 4),
-    ...			invite_reason="You've been gone for a month and we miss you.")
-    >>> beatles.members.all()
-    <QuerySet [<Person: Ringo Starr>, <Person: Paul McCartney>, 
-    <Person: Ringo Starr>]>
-    >>> # This will not work because it cannot tell which membership to remove
-    >>> beatles.members.remove(ringo)
+```shell
+>>> Membership.objects.create(person=ringo, group=beatles,
+...			date_joined=date(1968, 9, 4),
+...			invite_reason="You've been gone for a month and we miss you.")
+>>> beatles.members.all()
+<QuerySet [<Person: Ringo Starr>, <Person: Paul McCartney>, 
+<Person: Ringo Starr>]>
+>>> # This will not work because it cannot tell which membership to remove
+>>> beatles.members.remove(ringo)
+```
 
 그러나 **clear()** method는 모든 many-to-many relationships의 instance들을 삭제하기 위해 사용할 수 있습니다:
 
-    >>> # Beatles have broken up
-    >>> beatles.members.clear()
-    >>> # Note that this deletes the intermediate model instances
-    >>> Membership.objects.all()
-    <QuerySet []>
+```shell
+>>> # Beatles have broken up
+>>> beatles.members.clear()
+>>> # Note that this deletes the intermediate model instances
+>>> Membership.objects.all()
+<QuerySet []>
+```
 
 일단 중간 model의 instance를 생성하여 many-to-many relationship을 형성했다면, queries를 통해 볼 수 있습니다. 평범한 many-to-many relationship과 마찬가지로, many-to-many로 연결된 model들의 attribute들을 이용하여 query할 수 있습니다.
 
-    # Find all the groups with a member whose name starts with 'Paul'
-    >>> Group.objects.filter(members__name__startswith='Paul')
-    <QuerySet [<Group: The Beatles>]>
+```shell
+# Find all the groups with a member whose name starts with 'Paul'
+>>> Group.objects.filter(members__name__startswith='Paul')
+<QuerySet [<Group: The Beatles>]>
+````
 
 또한 중간 model들의 attributes들을 이용하여 query 할 수 있다.
 
-    # Find all the members of the Beatles that joined after 1 Jan 1961
-    >>> Person.objects.filter(
-    ...			group__name='The Beatles',
-    ...			membership__date_joined__gt=date(1961,1,1))
-    <QuerySet [<Person: Ringo Starr]>
+```shell
+# Find all the members of the Beatles that joined after 1 Jan 1961
+>>> Person.objects.filter(
+...			group__name='The Beatles',
+...			membership__date_joined__gt=date(1961,1,1))
+<QuerySet [<Person: Ringo Starr]>
+```
 
 만약 membership의 정보들에 접근해야 한다면 **Membership** model을 직접적으로 query 할 수 있습니다:
 
-    >>> ringos_membership = Membership.objects.get(group=beatles, person=ringo)
-    >>> ringos_membership.date_joined
-    datetime.date(1962, 8, 16)
-    >>> ringos_membership.invite_reason
-    'Needed a new drummer.'
+```shell
+>>> ringos_membership = Membership.objects.get(group=beatles, person=ringo)
+>>> ringos_membership.date_joined
+datetime.date(1962, 8, 16)
+>>> ringos_membership.invite_reason
+'Needed a new drummer.'
+```
 
 같은 정보에 접근할 수 있는 또 다른 방법은 **Person** object로부터 `many-to-many reverse relationship`을 querying하는 것이다.
 
-    >>> ringos_membership = ringo.membership_set.get(group=beatles)
-    >>> ringos_membership.date_joined
-    datetime.date(1962, 8, 16)
-    >>> ringos_membership.invite_reason
-    'Needed a new drummer.'
+```shell
+>>> ringos_membership = ringo.membership_set.get(group=beatles)
+>>> ringos_membership.date_joined
+datetime.date(1962, 8, 16)
+>>> ringos_membership.invite_reason
+'Needed a new drummer.'
+```
 
 ---
 
@@ -443,17 +491,19 @@ one-to-one relationship을 정의하기 위해, **OneToOneField**를 사용하�
 
 한 model에서 다른 app에 있는 model로 relate를 할 수 있습니다. 이를 위해 당신의 모델이 정의되어 있는 파일 가장 위에 related model을 import해야 합니다. 이후, 필요한 곳 어디든지 그 다른 model class를 참조하면 됩니다. 예를 보십시오:
 
-    from django.db import models
-    from geography.models import ZipCode
+```python
+from django.db import models
+from geography.models import ZipCode
     
-    class Restaurant(models.Model):
-    	# ...
-    	zipe_code = models.ForeignKey(
-    		ZipCode,
-    		on_delete=models.SET_NULL,
-    		blank=True,
-    		null=True,
-    	)
+class Restaurant(models.Model):
+    # ...
+    zipe_code = models.ForeignKey(
+        ZipCode,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
+```
 
 
 
@@ -463,13 +513,16 @@ Django는 model field 이름에 단 두 가지 제약만이 있습니다.
 
 1. field name은 Python reserved word가 될 수 없습니다. 왜냐하면 이는 Python syntax error를 발생시킬 것입니다. 예시를 보십시오:
 
-        class Example(models.Model):
-        	pass = models.IntegerField() # 'pass' is a reserved word!
+    ```python
+    class Example(models.Model):
+        pass = models.IntegerField() # 'pass' is a reserved word!
+    ```
 
 2. field name은 두 개 이상의 underscore을 가질 수 없는데, 이는 Django의 query lookup syntax words이기 때문입니다. 예시를 보십시오:
-
-        class Example(models.Model):
-        	foo__bar = models.IntegerField() # 'foo__bar' has two underscores!
+    ```python
+    class Example(models.Model):
+        foo__bar = models.IntegerField() # 'foo__bar' has two underscores!
+    ```
 
 이러한 제약 사항들은 피해갈 수 있습니다. 왜냐하면 field name은 database column 이름과 꼭 같을 필요가 없기 때문입니다. `db_column` option을 참조하십시오.
 
@@ -487,14 +540,16 @@ SQL reserved words, 예를 들어 **join**, **where** 또는 **select**는 model
 
 inner **class Meta**를 다음과 같이 사용하여 model에게 metadata를 줄 수 있습니다:
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Ox(models.Model):
-    	horn_length = models.IntegerField()
-    
-    	class Meta:
-    		ordering = ["horn_length"]
-    		verbose_name_plural = "oxen"
+class Ox(models.Model):
+    horn_length = models.IntegerField()
+       
+    class Meta:
+        ordering = ["horn_length"]
+        verbose_name_plural = "oxen"
+```
 
 Model의 metadata는 "field가 아닌 모든 것"입니다. 예를 들어 ordering options(**ordering**), database table name(**db_table**), 또는 사람이 읽을 수 있는 복수형 또는 단수형 이름들(**verbose_name** 그리고 **verbose_name_plural**)이 있습니다. 모두 필수는 아니고 **class Meta**를 model에 추가하는 것은 전적으로 optional입니다.
 
@@ -518,27 +573,29 @@ model의 가장 중요한 attribute는 **Manager**입니다. 이는 interface인
 
 예를 들어, 다음 model은 몇 개의 custom method를 갖고 있습니다:
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Person(models.Model):
-    	first_name = models.CharField(max_length=50)
-    	last_name = models.CharField(max_length=50)
-    	birth_date = models.DateField()
+class Person(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    birth_date = models.DateField()
     
-    	def baby_boomer_status(self):
-    		"Returns the person's baby-boomer status."
-    		import datetime
-    		if self.birth_date < datetime.date(1945, 8, 1):
-    			return "Pre-boomer"
-    		elif self.birth_date < datetime.date(1965, 1, 1):
-    			return "Baby boomer"
-    		else:
-    			return "Post-boomer"
+    def baby_boomer_status(self):
+        "Returns the person's baby-boomer status."
+        import datetime
+        if self.birth_date < datetime.date(1945, 8, 1):
+            return "Pre-boomer"
+        elif self.birth_date < datetime.date(1965, 1, 1):
+            return "Baby boomer"
+        else:
+            return "Post-boomer"
     
-    	@property
-    	def full_name(self):
-    		"Returns the person's full name."
-    		return '%s %s' % (self.first_name, self.last_name)
+    @property
+    def full_name(self):
+        "Returns the person's full name."
+        return '%s %s' % (self.first_name, self.last_name)
+```
 
 이 예시의 마지막 method는 `property`입니다.
 
@@ -564,30 +621,34 @@ object를 고유하게 식별하는 URL을 가진 object는 이 method를 정의
 
 내장 method들을 override하는 전형적인 경우는 object를 저장할 때마다 어떤 일이 일어나게 하고 싶을 때 입니다. 예시를 보십시오( **save()**에서 받아들이는 `parameter의 문서`를 참조하십시오):
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Blog(models.Model):
-    	name = models.CharField(max_length=100)
-    	tagline = models.TextFeild()
+class Blog(models.Model):
+    name = models.CharField(max_length=100)
+    tagline = models.TextFeild()
     
-    	def save(self, *args, **kwargs):
-    		do_something()
-    		super().save(*args, **kwargs)
-    		do_something_else()
+    def save(self, *args, **kwargs):
+        do_something()
+        super().save(*args, **kwargs)
+        do_something_else()
+```
 
 또한 잘못된 저장을 방지할 수 있습니다:
 
-    from django.db import models
+```python
+from django.db import models
     
-    class Blog(models.Model):
-    	name = models.CharField(max_length=100)
-    	tagline = models.TextField()
+class Blog(models.Model):
+    name = models.CharField(max_length=100)
+    tagline = models.TextField()
     
-    	def save(self, *args, **kwargs):
-    		if self.name == "Yoko One's blog":
-    			return # Yoko shall never have her own blog!
-    		else:
-    			super().save(*args, **kwargs) # Call the "real" save() method
+    def save(self, *args, **kwargs):
+        if self.name == "Yoko One's blog":
+            return # Yoko shall never have her own blog!
+        else:
+            super().save(*args, **kwargs) # Call the "real" save() method
+```
 
 database에 object가 저장되는 것을 확실히 하기 위해 superclass의 method를 호출해야 하는 것을 기억하십시오 - 바로 **super.save(*args, **kwargs)** 입니다. 만약 superclass의 method를 호출하는 것을 잊는다면, default behavior은 발생하지 않을 것이고 database는 변하지 않을 것입니다.
 
