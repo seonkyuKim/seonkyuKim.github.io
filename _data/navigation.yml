@@ -8,7 +8,7 @@ main:
     url: /reference/index/
   - title: "Insight"
     url: /insight/index/
-  - title: "Wine"
-    url: /wine/index/
+  - title: "Git Tutorial"
+    url: /gitTutorial/index/
   - title: "Tags"
     url: /tags/
