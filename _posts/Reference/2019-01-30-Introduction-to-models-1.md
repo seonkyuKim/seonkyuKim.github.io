@@ -28,8 +28,8 @@ model은 데이터에 대한 하나의, 결정적인 정보입니다. 모델은 
 from django.db import models
     
 class Person(models.Model):
-    	first_name = models.CharField(max_length=30)
-    	last_name = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
 ```
 
 **first_name**과 **last_name**은 model의 `field`입니다. 각각의 field는 class attribute로 구체화되며, 각각의 attribute는 하나의 database column으로 매핑됩니다.
@@ -38,9 +38,9 @@ class Person(models.Model):
 
 ```sql
 CREATE TABLE myapp_person (
-    	"id" serial NOT NULL PRIMARY KEY,
-    	"first_name" varchar(30) NOT NULL,
-    	"last_name" varchar(30) NOT NULL
+    "id" serial NOT NULL PRIMARY KEY,
+    "first_name" varchar(30) NOT NULL,
+    "last_name" varchar(30) NOT NULL
 );
 ```
 
@@ -61,9 +61,9 @@ models를 정의한 후, Django의 settings file을 수정하여 앞으로 그 m
 
 ```python
 INSTALLED_APPS = [
-    	#...
-    	'myapp',
-    	#...
+    #...
+    'myapp',
+    #...
 ]
 ```
 
@@ -81,15 +81,15 @@ INSTALLED_APPS = [
 from django.db import models
     
 class Musician(models.Model):
-    	first_name = models.CharField(max_length=50)
-    	last_name = models.CharField(max_length=50)
-    	instrument = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    instrument = models.CharField(max_length=100)
       
 class Album(models.Model):
-    	artist = models.ForeignKey(Musician, on_delete=models.CASCADE)
-    	name = models.CharField(max_length=100)
-    	release_date = models.DateField()
-    	num_starts = models.IntegerField()
+    artist = models.ForeignKey(Musician, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    release_date = models.DateField()
+    num_starts = models.IntegerField()
 ```
 
 ## Field types
@@ -110,19 +110,19 @@ Django는 수십 개의 내장 field-type들을 갖고 있습니다; 그 전체 
 
 또한 모든 field type에 적용되는 공통 argument들이 있습니다. 모두 optional 입니다. 이들은 `reference`에서 전부 설명되어 있지만, 여기에서는 가장 많이 사용하는 몇 가지만 요약을 하겠습니다.
 
->제 블로그 reference 에 Field options 문서를 번역해놓았으니 참고하시면 좋을 것 같습니다.
+>[Field options](https://seonkyukim.github.io/reference/Field-options/)를 참고하시면 좋을 것 같습니다.
 
-**null**
+### null
 
 만약 **True**라면, Django는 database에 빈 값인 **NULL**값을 저장할 수 있습니다. 초기 값은 **False**입니다.
 
-**blank**
+### blank
 
 만약 **True**라면, field는 빈 칸이 있을 수 있습니다. 초기 값은 False입니다.
 
 blank는 null과 다릅니다. null은 database-related인 반면, blank는 validation-related입니다. 만약 field에서 **blank=True**라면, form validation은 entry의 비어있는 값을 허락합니다. 만약 field에서 **blank=False**라면, 그 field의 값은 항상 요구됩니다.
 
-**choices**
+### choices
 
 2-tuples로 구성된 iteralbe(e.g. list or tuple)을 이 field의 choices로 사용할 수 있습니다. 만약 choices가 주어지면, default form widget은 기본적인 text field가 아니라 select box가 될 것이고, 주어진 choices로 선택권이 제한될 것입니다.
 
@@ -163,15 +163,15 @@ class Person(models.Model):
 'Large'
 ```
 
-**default**
+### default
 
 field의 초기 값 입니다. 어떠한 한 값이나 callable object가 될 수 있습니다. 만약 callable하다면 이 객체는 새로운 object가 생성될 때마다 실행될 것입니다.
 
-**help_text**
+### help_text
 
 form widget에 표시될 추가적인 도움말 입니다. 만약 폼에서 해당 필드를 사용하지 않더라도 설명을 표기하는데 유용합니다
 
-**primary_key**
+### primary_key
 
 만약 **True**라면, 이 field는 model의 primary key가 됩니다.
 
@@ -193,7 +193,7 @@ class Fruit(models.Model):
 <QuerySet ['Apple', 'Pear']>
 ```
 
-**unique**
+### unique
 
 만약 True라면, 이 field는 table 전체에서 유일해야 합니다.
 
@@ -258,7 +258,7 @@ place = models.OneToOneField(
 
 명확하게, relational database의 강점은 테이블간에 relating이 되어있다는 점입니다. Django는 가장 많이 사용되는 세 가지 database relationship을 정의해 줍니다: many-to-one, many-to-many 그리고 one-to-one.
 
-**Many-to-one relationships**
+### Many-to-one relationships
 
 many-to-one relationship을 정의하기 위해, **django.db.models.ForeignKey**를 사용합니다. 이것을 다른 **Field** 타입처럼 사용하면 됩니다: model에 class attribute로 추가하십시오.
 
@@ -296,7 +296,7 @@ class Car(models.Model):
 
 ---
 
-**Many-to-many relationships**
+### Many-to-many relationships
 
 Many-to-many relationships를 사용하기 위해서는, **ManyToManyField**를 사용하십시오. 이것을 다른 **Field** type처럼 사용하시면 됩니다: model에 class attribute로 추가하십시오.
 
@@ -331,7 +331,7 @@ class Pizza(models.Model):
 
 ---
 
-**Extra fields on many-to-many relationships**
+### Extra fields on many-to-many relationships
 
 pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있다면, **ManyToManyField**만 사용하시면 됩니다. 하지만, 때때로 relationship이 있는 두 models간의 데이터들을 연결지어야 할 것입니다.
 
@@ -466,7 +466,7 @@ datetime.date(1962, 8, 16)
 
 ---
 
-**One-to-one relationships**
+### One-to-one relationships
 
 one-to-one relationship을 정의하기 위해, **OneToOneField**를 사용하십시오. 어느 다른 **Field** type처럼 이용하면 됩니다: model의 class attribute로 추가하십시오.
 
