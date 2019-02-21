@@ -1,6 +1,6 @@
 ---
 permalink: /gitTutorial/index/
-title: "Wine"
+title: "Git Tutorial"
 layout: category
 taxonomy: git-tutorial
 author_profile: true
