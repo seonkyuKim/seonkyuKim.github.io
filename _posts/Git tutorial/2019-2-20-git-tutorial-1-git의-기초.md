@@ -370,7 +370,9 @@ $ git commit
 # $ git add mystory.txt    <- 이 줄을 입력할 필요 없습니다.
 $ git commit -a -m "change the name of main character"
 ```
-편리하다고 생각하실 수 있지만, 이는 저장하지 말아야 할 변경사항까지 모두 추가할 가능성이 있습니다. 따라서 이 기능을 사용하실 때는 주의하시기 바랍니다. 
+
+**Note**<br><br>편리하다고 생각하실 수 있지만, 이는 저장하지 말아야 할 변경사항까지 모두 추가할 가능성이 있습니다. 따라서 이 기능을 사용하실 때는 주의하시기 바랍니다. 
+{: .notice--warning}
 <br>
 
 # GitHub 시작하기
@@ -463,6 +465,7 @@ $ git push origin master
 
 **To-do List**<br><br>- 자신의 리모트 저장소에 `push`하기
 {: .notice--success}
+<br>
 
 # 마치며
 
