@@ -1,0 +1,115 @@
+---
+title: "02: 기본적인 리눅스/유닉스 명령어"
+categories: git-tutorial
+tags:
+- git
+- tutorial
+author_profile: true
+---
+
+터미널을 열어보십시오. 윈도우 사용자께서는 git을 설치하면서 같이 설치된 git bash의 사용을 권해드립니다. 터미널을 처음 사용하시면 이것이 무엇인지조차 모르실 겁니다. 간단하게 mac에서는 finder, 윈도우에서는 윈도우탐색기(라이브러리)라고 생각하시면 됩니다. 차례대로 따라해 보시면 좋을 것 같습니다.
+
+**bash란?**<br><br>[shell, bash, zbash의 간단 개념정리](https://ithub.tistory.com/205)를 보고 오시면 좋을 것 같습니다. 간단하게 명령 프롬포트에서는 사용하지 못하는 리눅스/유닉스 명령어를 윈도우에서 사용하실 수 있다고 생각하시면 됩니다.
+{: .notice--info}
+
+## 현재 위치 보기: pwd
+
+finder나 윈도우 탐색기를 처음 열 때, 특정 위치에서 열리게 됩니다. 터미널도 마찬가지입니다. `pwd` 명령어를 사용하여 현재 위치를 알 수 있습니다:
+
+```shell
+$ pwd
+/Users/mac    # 출력 내용은 운영체제에 따라 다를 수 있습니다.
+```
+
+## 파일 및 폴더 목록 보기: ls
+
+finder나 윈도우 탐색기에서는 창을 열기만 하면 자동으로 어떤 파일과 폴더가 있는지 보여주지만, 터미널에서는 위의 명령어를 쳐주어야 합니다. `ls -a`는 현재 위치의 숨김 파일까지 모두 보여줍니다. 직접 확인해보세요!
+
+```shell
+$ ls
+# 출력 내용은 사용자의 컴퓨터에 어떤 파일과 폴더가 있냐에 따라 달라집니다.
+Applications
+Desktop    # 이 폴더가 바탕화면을 의미합니다.
+Documents
+...
+```
+
+## 디렉토리 만들기: mkdir &lt;fileName&gt;
+
+finder나 윈도우 탐색기에서의 '새폴더 만들기'와 같은 기능을 합니다. 현재 위치에 **mybook**이라는 디렉토리를 만들어 봅시다. 이후 `ls`를 실행하여 잘 만들어졌는지 확인해봅시다:
+
+```shell
+$ mkdir mybook    # mybook이라는 디렉토리를 만듭니다.
+$ ls
+Applications
+Desktop
+Documents
+...
+mybook    # 저희가 새로 만든 폴더입니다.
+```
+
+## 이동하기 : cd &lt;path&gt;
+
+`cd`를 이용하여 원하는 경로로 이동할 수 있습니다. **.** 은 현재 디렉토리를, **..** 은 현재 위치를 기준으로 상위 디렉토리를 의미합니다. 다음 예시를 보십시오:
+
+```shell
+# 현재 위치 출력 
+$ pwd
+/User/mac
+
+# 하위 디렉토리인 mybook으로 이동 후 현재 위치 출력
+$ cd mybook 
+$ pwd
+/User/mac/mybook
+
+# 현재 디렉토리로 이동. 즉, 아무런 이동이 일어나지 않습니다.
+$ cd .
+$ pwd
+/User/mac/mybook
+
+# 상위 디렉토리로 이동
+$ cd ..
+$ pwd
+/User/mac
+```
+
+## 파일 편집하기: vi &lt;fileName&gt;, vim &lt;Name&gt;
+
+여러 종류의 에디터를 사용할 수 있습니다. 가장 많이 이용하는 vi/vim 에디터를 살펴보고 가도록 하겠습니다.
+
+`vim <fileName>`을 실행하면, 파일이 있는 경우 해당 파일의 내용을 볼 수 있습니다. 파일이 없는 경우, 해당 제목의 파일을 새로 만듭니다. 저희는 mybook 디렉토리로 이동하여 **mystory.txt** 이름의 파일을 만듭시다:
+
+```shell
+$ vim mybook.txt
+```
+
+위 명령어를 실행하면 다음과 같이 뜹니다:
+
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-21-git-tutoial-02-basic-cmd/screenshot-1.png){: .align-center}
+
+
+이때, 키보드에서 i를 누르시면 **INSERT MODE**로 변환되어 내용을 편집할 수 있습니다:
+
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-21-git-tutoial-02-basic-cmd/screenshot-2.png){: .align-center}
+
+(좌측 하단에 INSERT로 바뀐 것을 볼 수 있습니다)
+
+내용을 다 입력했다면 **esc** → **:wq** 를 누르시면 저장됩니다:
+
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-21-git-tutoial-02-basic-cmd/screenshot-3.png){: .align-center}
+
+(**esc**를 누르고 입력하면 좌측 하단에 표시됩니다.)
+
+만약 변경한 내용을 저장하지 않고 종료하고 싶다면 **esc** → **:q** 를 이용하시면 됩니다. 
+
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-21-git-tutoial-02-basic-cmd/screenshot-4.png){: .align-center}
+
+하단에 다음과 같은 메세지가 뜬다면 **esc** → **:q!**를 이용하시면 됩니다.
+
+## 파일 삭제하기: rm &lt;fileName&gt;
+
+## 폴더 삭제하기: rmdir &lt;dirName&gt;
+
+**Note**<br><br>파일이나 폴더가 삭제가 안 될 경우가 있습니다. 이때는 `-f` 옵션을 추가하여 실행해 보시길 바랍니다(강제로 삭제한다는 의미입니다). 다른 옵션들도 궁금하다면 참고하시길 바랍니다: [https://shaeod.tistory.com/506](https://shaeod.tistory.com/506)
+{: .notice--warning}
+<br>

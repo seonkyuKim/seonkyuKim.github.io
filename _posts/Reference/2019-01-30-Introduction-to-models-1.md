@@ -12,17 +12,17 @@ toc: true
 
 # Models
 
-model은 데이터에 대한 하나의, 결정적인 정보입니다. 모델은 필수적인 field들과 저장하고 있는 데이터들의 행동을 결정합니다. 일반적으로, 각각의 model은 하나의 database table로 매핑됩니다.
+모델은 데이터에 대한 하나의, 결정적인 정보입니다. 모델은 필수적인 필드들과 저장하고 있는 데이터들의 행동을 결정합니다. 일반적으로, 각각의 모델은 하나의 데이터베이스 테이블로 매핑됩니다.
 
 기초 사항:
 
-- 각각의 model은 **`django.db.models.Model`**의 하위 python 클래스입니다.
-- model 클래스의 각각의 attribute는 database field를 나타냅니다.
-- 이것들과 함께, Django는 기본적인 database-access API를 제공합니다; `Making queries`참고하십시오.
+- 각각의 모델은 **django.db.models.Model**의 하위 파이썬 클래스입니다.
+- 모델 클래스의 각각의 attribute는 데이터베이스 필드를 나타냅니다.
+- 이것들과 함께, 장고는 기본적인 데이터베이스 접근 API를 제공합니다; `Making queries`참고하십시오.
 
-# Quick example
+## Quick example
 
-다음 예시는 **first_name**과 **last_name**을 갖고 있는 **Person** model입니다:
+다음 예시는 **first_name**과 **last_name**을 갖고 있는 **Person** 모델입니다:
 
 ```python
 from django.db import models
@@ -32,9 +32,9 @@ class Person(models.Model):
     last_name = models.CharField(max_length=30)
 ```
 
-**first_name**과 **last_name**은 model의 `field`입니다. 각각의 field는 class attribute로 구체화되며, 각각의 attribute는 하나의 database column으로 매핑됩니다.
+**first_name**과 **last_name**은 모델의 필드입니다. 각각의 필드는 클래스 attribute로 구체화되며, 각각의 attribute는 하나의 데이터베이스 칼럼으로 매핑됩니다.
 
-위의 **Person** model은 다음과 같은 데이터베이스 테이블을 생성합니다:
+위의 **Person** 모델은 다음과 같은 데이터베이스 테이블을 생성합니다:
 
 ```sql
 CREATE TABLE myapp_person (
@@ -47,17 +47,17 @@ CREATE TABLE myapp_person (
 Some technical notes:
     
 
-- 테이블의 이름인 **myapp_person**은 model metadata로부터 자동적으로 생성되지만, override할 수 있습니다. 자세한 사항은 `Table names`를 참조하십시오.
-- **id** field는 자동적으로 추가되지만 이 역시 override할 수 있습니다. `Automatic primary key fields`를 참조하십시오.
-- 위 예시의 **CREATE TABLE**은 PostgreSQL 문법으로 쓰여 있는데, Django가  `settings file`에 명시된 database backend 맞춤 SQL 을 사용한다는 것을 기억하십시오.
+- 테이블의 이름인 **myapp_person**은 모델 메타데이터로부터 자동적으로 생성되지만, 오버라이드할 수 있습니다. 자세한 사항은 `Table names`를 참조하십시오.
+- **id** 필드는 자동적으로 추가되지만 이 역시 오버라이드할 수 있습니다. `Automatic primary key fields`를 참조하십시오.
+- 위 예시의 **CREATE TABLE**은 PostgreSQL 문법으로 쓰여 있는데, 장고가  `settings file`에 명시된 데이터베이스 백앤드 맞춤 SQL 을 사용한다는 것을 기억하십시오.
 
 ---
 
-# Using models
+## Using models
 
-models를 정의한 후, Django의 settings file을 수정하여 앞으로 그 models를 사용할 것이라고 알려주어야 합니다. 이를 위해 **INSTALLED_APPS**파일에 **models.py**를 포함하고 있는 module의 이름을 추가하십시오.
+모델들을 정의한 후, 장고의 settings file을 수정하여 앞으로 그 모델들을 사용할 것이라고 알려주어야 합니다. 이를 위해 **INSTALLED_APPS**파일에 **models.py**를 포함하고 있는 모듈의 이름을 추가하십시오.
 
-예를 들어, 만약 당신의 application의 models가 **myapp.models** module 안에 있다면 (**manage.py startapp** 명령어를 사용하여 만든 application package structure 안에 있다면), **INSTALLED_APPS**는 다음과 같습니다:
+예를 들어, 만약 당신의 애플리케이션의 모델들이 **myapp.models** 모듈 안에 있다면 (**manage.py startapp** 명령어를 사용하여 만든 application package structure 안에 있다면), **INSTALLED_APPS**는 다음과 같습니다:
 
 ```python
 INSTALLED_APPS = [
@@ -67,13 +67,13 @@ INSTALLED_APPS = [
 ]
 ```
 
-새로운 app들을 **INSTALLED_APPS**에 추가한 뒤, **manage.py makemigrations**를 이용하여 부분적 migrations를 만든 후, **manage.py migrate**를 꼭 실행하도록 하십시오.
+새로운 앱들을 **INSTALLED_APPS**에 추가한 뒤, **manage.py makemigrations**를 이용하여 부분적 migrations를 만든 후, **manage.py migrate**를 꼭 실행하도록 하십시오.
 
 ---
 
-# Fields
+## Fields
 
-기존에 정의된 database field들의 리스트를 아는 것은 model에서 가장 중요한 부분입니다 (그리고 model에서 신경써야 할 유일한 부분입니다). Fields는 class attirbute에 의해 명시됩니다. **clean, save** 또는 **delete**와 같은 `models API`와 field의 이름이 충돌하지 않도록 주의하십시오.
+이미 정의된 데이터베이스 필드들의 목록을 아는 것은 모델에서 가장 중요한 부분입니다 (또한 모델에서 신경써야 할 유일한 부분입니다). 필드는 클래스 attirbute에 의해 명시됩니다. **clean, save** 또는 **delete**와 같은 모델 API와 필드의 이름이 충돌하지 않도록 주의하십시오.
 
 예시 :
 
@@ -92,39 +92,39 @@ class Album(models.Model):
     num_starts = models.IntegerField()
 ```
 
-## Field types
+### Field types
 
-model 안의 각각의 field는 적당한 **Field** class안의 instance여야 합니다. Django는 다음 몇 가지를 결정하기 위해 field class types를 사용합니다:
+모델 안의 각각의 필드는 적당한 **Field** 클래스 안의 인스턴스여야 합니다. 장고는 다음 몇 가지를 결정하기 위해 필드 클래스 타입들을 사용합니다:
 
-- Column type은 어떤 종류의 database를 저장할지 알려 줍니다.(e.g.**INTEGER, VARCHAR, TEXT**)
-- Default HTML `widget`은 form field들을 rendering할 때 사용됩니다.(e.g. **`<input type="text"><select>`**)
-- Minimal validation requirements는 Django의 admin과 자동으로 생성되는 form에서 사용됩니다.
+- 칼럼 타입은 어떤 종류의 데이터베이스를 저장할지 알려 줍니다.(e.g.**INTEGER, VARCHAR, TEXT**)
+- 디폴트 HTML 위젯은 폼 필드들을 렌더링 할 때 사용됩니다.(e.g. **`<input type="text"><select>`**)
+- 최소한의 유효성검사(minimal validation)는 장고의 admin과 자동적으로 생성되는 폼에서 사용됩니다.
 
-Django는 수십 개의 내장 field-type들을 갖고 있습니다; 그 전체 목록을 `model field reference`에서 확인할 수 있다. 만약 Django의 내장 field가 제 기능을 못 할 경우, 당신만의 field를 쉽게 작성할 수 있다; `Writing custom model fields`를 참조하십시오.
+장고는 수십 개의 내장 필드 타입들을 갖고 있습니다; 그 전체 목록을 `model field reference`에서 확인할 수 있다. 만약 장고의 내장 필드가 제 기능을 못 할 경우, 당신만의 필드를 쉽게 작성할 수 있습니다; `Writing custom model fields`를 참조하십시오.
 
 
 
-## Field options
+### Field options
 
-각각의 field는 해당 field에 필수적인 각각의 arguments를 갖고 있습니다(`model field reference`에 표시되어 있습니다). 예를 들어, **CharField**(그리고 그것의 subclasses)는 데이터를 저장하는데 사용되는 **VARCHAR** database field의 사이즈를 명시해주는 **max_length** 인자를 필요로 합니다.
+각각의 필드는 해당 필드에 필수 arguments를 갖고 있습니다(`model field reference`에 표시되어 있습니다). 예를 들어, **CharField**(그리고 그것의 하위클래스)는 데이터를 저장하는데 사용되는 **VARCHAR** 데이터베이스 필드의 사이즈를 명시해주는 **max_length** argument를 필요로 합니다.
 
-또한 모든 field type에 적용되는 공통 argument들이 있습니다. 모두 optional 입니다. 이들은 `reference`에서 전부 설명되어 있지만, 여기에서는 가장 많이 사용하는 몇 가지만 요약을 하겠습니다.
+또한 모든 필드 타입에 적용되는 공통 argument들이 있습니다. 모두 선택적입니다. 이들은 `reference`에서 전부 설명되어 있지만, 여기에서는 가장 많이 사용하는 몇 가지만 요약을 하겠습니다.
 
 >[Field options](https://seonkyukim.github.io/reference/Field-options/)를 참고하시면 좋을 것 같습니다.
 
-### null
+**null**
 
-만약 **True**라면, Django는 database에 빈 값인 **NULL**값을 저장할 수 있습니다. 초기 값은 **False**입니다.
+**True**일 경우, 장고는 데이터베이스에 빈 값인 **NULL**값을 저장할 수 있습니다. 초기 값은 **False**입니다.
 
-### blank
+**blank**
 
-만약 **True**라면, field는 빈 칸이 있을 수 있습니다. 초기 값은 False입니다.
+**True**일 경우, 필드는 빈 칸이 있을 수 있습니다. 초기 값은 **False**입니다.
 
-blank는 null과 다릅니다. null은 database-related인 반면, blank는 validation-related입니다. 만약 field에서 **blank=True**라면, form validation은 entry의 비어있는 값을 허락합니다. 만약 field에서 **blank=False**라면, 그 field의 값은 항상 요구됩니다.
+blank는 null과 다릅니다. null은 database-related인 반면, blank는 validation-related입니다. 만약 필드에서 **blank=True**라면, form validation은 entry의 비어있는 값을 허락합니다. 만약 필드에서 **blank=False**라면, 그 필드의 값은 항상 요구됩니다.
 
-### choices
+**choices**
 
-2-tuples로 구성된 iteralbe(e.g. list or tuple)을 이 field의 choices로 사용할 수 있습니다. 만약 choices가 주어지면, default form widget은 기본적인 text field가 아니라 select box가 될 것이고, 주어진 choices로 선택권이 제한될 것입니다.
+2-tuples로 구성된 iteralbe(e.g. list or tuple)을 이 필드의 choices로 사용할 수 있습니다. 만약 choices가 주어지면, 디폴트 폼 위젯은 기본적인 text field가 아니라 select box가 될 것이고, 주어진 choices로 선택권이 제한될 것입니다.
 
 choices list의 예시는 다음과 같습니다:
 
@@ -138,9 +138,9 @@ YEAR_IN_SCHOOL_CHOICES = (
 )
 ```
 
-각각의 tuple의 첫 번째 요소는 database에 저장되는 값입니다. 두 번째 요소는 field의 form widget에 나타나는 값(display value)입니다.
+각각의 튜플의 첫 번째 요소는 데이터베이스에 저장되는 값입니다. 두 번째 요소는 필드의 폼 위젯에 나타나는 값(display value)입니다.
 
-model instance가 주어졌을 때, **choices**를 갖고 있는 field에서 표시되는 값은 **get_F00_display()** method를 이용하여 알 수 있습니다. 예시를 보십시오:
+모델 인스턴스가 주어졌을 때, **choices**를 갖고 있는 필드에서 표시되는 값은 **get_F00_display()** 메소드를 이용하여 알 수 있습니다. 예시를 보십시오:
 
 ```python
 from django.db import models
@@ -163,21 +163,21 @@ class Person(models.Model):
 'Large'
 ```
 
-### default
+**default**
 
-field의 초기 값 입니다. 어떠한 한 값이나 callable object가 될 수 있습니다. 만약 callable하다면 이 객체는 새로운 object가 생성될 때마다 실행될 것입니다.
+필드의 초기 값 입니다. 하나의 값이나 callable 객체가 될 수 있습니다. 만약 callable하다면 이는 새로운 객체가 생성될 때마다 실행될 것입니다.
 
-### help_text
+**help_text**
 
-form widget에 표시될 추가적인 도움말 입니다. 만약 폼에서 해당 필드를 사용하지 않더라도 설명을 표기하는데 유용합니다
+폼 위젯에 표시될 추가적인 도움말 입니다. 만약 폼에서 해당 필드를 사용하지 않더라도 설명을 표기하는데 유용합니다
 
-### primary_key
+**primary_key**
 
-만약 **True**라면, 이 field는 model의 primary key가 됩니다.
+**True**일 경우, 이 필드는 모델의 primary key가 됩니다.
 
-만약 model에서 어떤 field에도 **primary_key=True**로 설정해 두지 않았다면, Django는 자동적으로 primary key로 사용할 **IntegerField**를 추가하기 때문에 이러한 기본 primary-key를 override하고 싶지 않은 이상 어떤 field에 **primary_key=True**를 설정할 필요 없습니다. `Automatic primary key fields`에 더 자세히 기술되어 있습니다.
+만약 모델에서 어떤 필드에도 **primary_key=True**로 설정해 두지 않았다면, 장고는 자동적으로 primary key로 사용할 **IntegerField**를 추가합니다. 따라서 이와 같은 기본 primary-key를 오버라이드하고 싶지 않은 이상 어떤 필드에 **primary_key=True**를 설정할 필요 없습니다. `Automatic primary key fields`에 더 자세히 기술되어 있습니다.
 
-primary key field는 읽을 수만 있습니다. 만약 기존 object의 primary key 값을 변경한다면, 기존 object 옆에 새로운 object가 생성될 것입니다. 예시를 보십시오:
+primary key 필드는 읽을 수만 있습니다. 만약 기존 객체의 primary key 값을 변경한다면, 기존 객체 옆에 새로운 객체가 생성될 것입니다. 예시를 보십시오:
 
 ```python
 from django.db import models
@@ -193,17 +193,17 @@ class Fruit(models.Model):
 <QuerySet ['Apple', 'Pear']>
 ```
 
-### unique
+**unique**
 
-만약 True라면, 이 field는 table 전체에서 유일해야 합니다.
+**True**일 경우, 이 필드는 테이블 전체에서 유일해야 합니다.
 
-다시 한 번 말하지만, 이들은 모두 공통된 field option들에 대한 짧은 설명일 뿐입니다. 자세한 내용은 `common model field option reference`에 기술되어 있습니다.
+다시 한 번 말하지만, 이들은 모두 공통된 필드 옵션들에 대한 짧은 설명일 뿐입니다. 자세한 내용은 `common model field option reference`에 기술되어 있습니다.
 
 
 
-## Automatic primary key fields
+### Automatic primary key fields
 
-초기 값으로, Django는 각각의 model에 다음과 같은 field를 생성합니다:
+초기 값으로, 장고는 각각의 모델에 다음과 같은 필드를 생성합니다:
 
 ```python
 id = models.AutoField(primary_key=True)
@@ -211,16 +211,17 @@ id = models.AutoField(primary_key=True)
 
 이는 자동적으로 증가하는 (auto-incrementing) primary key입니다.
 
-만약 custom primary key를 사용하고 싶다면, 모델의 field들 중 하나에 **primary_key=True**를 명시하십시오. 만약 명시적으로 **Field.primary_key**를 설정 했다면, Django는 위의 자동적으로 생성된 **id** column을 추가하지 않을 것입니다.
+만약 커스텀 primary key를 사용하고 싶다면, 모델의 필드들 중 하나에 **primary_key=True**를 명시하십시오. 만약 명시적으로 **Field.primary_key**를 설정 했다면, 장고는 위의 자동적으로 생성된 **id** 칼럼을 추가하지 않을 것입니다.
 
-각각의 model은 (명시적으로 추가 되었든지 아니면 자동적으로 추가 되었든지간에) 오직 하나의 field만이 **primary_key=True**를 갖고 있어야 합니다.
+각각의 모델은 (명시적으로 추가 되었든지 아니면 자동적으로 추가 되었든지간에) 오직 하나의 필드만이 **primary_key=True**를 갖고 있어야 합니다.
 
 
 
-## Verbose field names
+### Verbose field names
 
 >Verbose name을 직역하면 장황한 이름입니다.
-**ForeignKey**, **ManyToManyField**와 **OneToOneField**를 제외하고, 각각의 field type들은 선택적으로(optional) 첫 번째 위치의 argument로 verbose name을 갖습니다. 만약 verbose name이 주어지지 않았다면, Django는 자동적으로 field의 attribute 이름에 있는 underscores를 space로 바꾸어 verbose name을 생성합니다.
+
+**ForeignKey**, **ManyToManyField**와 **OneToOneField**를 제외하고, 각각의 필드 타입들은 선택적인 첫 번째 argument로 verbose name을 갖습니다. 만약 verbose name이 주어지지 않았다면, 장고는 자동적으로 필드의 attribute 이름의 언더바를 띄어쓰기로 바꾸어 verbose name을 생성합니다.
 
 이 예시에서 verbose name은 "**person's first name**"입니다:
 
@@ -234,7 +235,7 @@ first_name = models.CharField("person's first name", max_length=30)
 first_name = models.CharField(max_length=30)
 ```
 
-**ForeignKey**, **ManyToManyField**와 **OneToOneField**는 첫 번째 argument로 model class가 필요하기 때문에 **verbose_name** keyword argument를 사용합니다.
+**ForeignKey**, **ManyToManyField**와 **OneToOneField**는 첫 번째 argument로 모델 클래스가 필요하기 때문에 **verbose_name** keyword argument를 사용합니다.
 
 ```python
 poll = models.ForeignKey(
@@ -250,21 +251,21 @@ place = models.OneToOneField(
 )
 ```
 
-관습적으로 **verbose_name**의 첫 글자는 대문자를 쓰지 않습니다. Django가 자동적으로 첫 번째 글자를 대문자로 바꾸어주기 때문입니다.
+관습적으로 **verbose_name**의 첫 글자는 대문자를 쓰지 않습니다. 장고가 자동적으로 첫 번째 글자를 대문자로 바꾸어주기 때문입니다.
 
 
 
-## Relationships
+### Relationships
 
-명확하게, relational database의 강점은 테이블간에 relating이 되어있다는 점입니다. Django는 가장 많이 사용되는 세 가지 database relationship을 정의해 줍니다: many-to-one, many-to-many 그리고 one-to-one.
+명확하게, 관계형 데이터베이스의 강점은 테이블간에 관계가 있다는 점입니다. 장고는 가장 많이 사용되는 세 가지 데이터베이스 관계를 정의해 줍니다: 다대일, 다대다 그리고 일대일 관계입니다.
 
-### Many-to-one relationships
+#### Many-to-one relationships
 
-many-to-one relationship을 정의하기 위해, **django.db.models.ForeignKey**를 사용합니다. 이것을 다른 **Field** 타입처럼 사용하면 됩니다: model에 class attribute로 추가하십시오.
+M:1 관계를 정의하기 위해, **django.db.models.ForeignKey**를 사용합니다. 이것을 다른 필드 타입처럼 사용하면 됩니다: 모델에 클래스 attribute로 추가하십시오.
 
-**ForeignKey**는 정해진 위치의 필수 argument를 요구합니다: 모델과 relate된 class를 지정합니다.
+**ForeignKey**는 정해진 위치의 필수적 argument를 요구합니다: 모델과 관계된 클래스를 지정합니다.
 
-예를 들어, **Car** model이 **Manufacturer**을 갖고 있다면 - 즉, **Manufacturer**은 다양한 cars를 만들지만 각각의 **Car**는 단 하나의 **Manufacturer**를 갖고 있다 - 다음과 같이 할 수 있습니다:
+예를 들어, **Car** 모델이 **Manufacturer**을 갖고 있다면 - 즉, **Manufacturer**은 다양한 cars를 만들지만 각각의 **Car**는 단 하나의 **Manufacturer**를 갖고 있다면 - 다음과 같이 할 수 있습니다:
 
 ```python
 from django.db import models
@@ -278,9 +279,9 @@ class Car(models.Model):
     # ...
 ```
 
-또한 `recursive relationship`(자기 자신에게 many-to-one relationship을 갖고 있는 object)을 만들 수 있고 `아직 정의되지 않은 model에게 relationship`을 만들 수 있습니다; 자세한 사항은 `model field reference`를 참고하십시오.
+또한 재귀적 관계(자기 자신에게 다대일 관계를 갖고 있는 객체)을 만들 수 있고 아직 정의되지 않은 모델과의 관계를 만들 수 있습니다; 자세한 사항은 `model field reference`를 참고하십시오.
 
-필수적인 것은 아니지만, **ForeignKey field**의 이름(위의 예에서는 **manufacturer**)은 소문자의 model 이름을 사용하는 것이 좋습니다. 물론, 원하는 대로 field 이름을 정해도 됩니다. 예시를 보십시오:
+필수적인 것은 아니지만, **ForeignKey field**의 이름(위의 예에서는 **manufacturer**)은 소문자의 모델 이름을 사용하는 것이 좋습니다. 물론, 원하는 대로 필드 이름을 정해도 됩니다. 예시를 보십시오:
 
 ```python
 class Car(models.Model):
@@ -290,19 +291,19 @@ class Car(models.Model):
     )
 ```
 
-**See also**<br><br>**ForeignKey** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있습니다. 이 옵션들은 relationship이 어떻게 작동할지를 규정해 줍니다; 모두 optional입니다.<br>backward-related objects에 접근하는 방법에 대해서는 `Following relationships backward example`을 참고하십시오.<br>sample code를 보고 싶다면 `Many-to-one relationship model example`을 참고하십시오.
+**See also**<br><br>**ForeignKey** 필드는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있습니다. 이 옵션들은 관계가 어떻게 작동할지를 규정해 줍니다; 모두 선택적입니다.<br>backward-related 객체에 접근하는 방법에 대해서는 `Following relationships backward example`을 참고하십시오.<br>sample code를 보고 싶다면 `Many-to-one relationship model example`을 참고하십시오.
 {: .notice--info}
 
 
 ---
 
-### Many-to-many relationships
+#### Many-to-many relationships
 
-Many-to-many relationships를 사용하기 위해서는, **ManyToManyField**를 사용하십시오. 이것을 다른 **Field** type처럼 사용하시면 됩니다: model에 class attribute로 추가하십시오.
+다대다 관계를 사용하기 위해서는, **ManyToManyField**를 사용하십시오. 이것을 다른 필드 타입처럼 사용하시면 됩니다: 모델에 클래스 attribute로 추가하십시오.
 
-**ManyToManyField**는 지정된 위치의 필수 argument를 요구합니다: relate할 class를 지정합니다.
+**ManyToManyField**는 지정된 위치의 필수적 argument를 요구합니다: 관계를 맺을 클래스를 지정합니다.
 
-예를 들어, **Pizza** 가 다양한 **Topping** objects를 갖고 있다면 - 즉, 한 **Topping**이 다양한 pizzas에 있을 수 있고 각각의 **Pizza**도 다양한 toppings를 가질 수 있다면 - 다음과 같이 이를 나타낼 수 있습니다:
+예를 들어, **Pizza** 가 다양한 **Topping** 객체를 갖고 있다면 - 즉, 한 **Topping**이 다양한 pizzas에 있을 수 있고 각각의 **Pizza**도 다양한 toppings를 가질 수 있다면 - 다음과 같이 이를 나타낼 수 있습니다:
 
 ```python
 from django.db import models
@@ -316,22 +317,22 @@ class Pizza(models.Model):
     toppings = models.ManyToManyField(Topping)
 ```
 
-**ForeignKey**와 마찬가지로, recursive relationship(자기 자신에게 many-to-many relationship을 갖고 있는 객체)를 만들 수 있고 `아직 정의되지 않은 model에게 relationship`을 만들 수 있습니다.
+**ForeignKey**와 마찬가지로, 재귀적 관계(자기 자신에게 다대다 관계를 갖고 있는 객체)를 만들 수 있고 `아직 정의되지 않은 model에게 relationship`을 만들 수 있습니다.
 
-필수적인 것은 아니지만, related 모델을 나타내는 **ManyToManyField**의 이름은 복수형을 하는 것이 좋습니다(위 예에서는 **toppings**).
+필수적인 것은 아니지만, 관계된 모델을 나타내는 **ManyToManyField**의 이름은 복수형을 하는 것이 좋습니다(위 예에서는 **toppings**).
 
-어떤 model이 **ManyToManyField**를 갖고 있는지는 상관 없지만, 두 model 모두가 아니라 한 쪽에만 설정해야 합니다.
+어떤 모델이 **ManyToManyField**를 갖고 있는지는 상관 없지만, 두 모델 모두가 아니라 한 쪽에만 설정해야 합니다.
 
 위의 예시에서는 폼에서 Pizza의 toppings를 선택할 수 있게 해줍니다(**Topping**이 많은 **pizzas**를 갖고 있는 것이 아닙니다). 이는 pizza가 많은 topping들이 갖고 있다고 생각하는 것이 topping이 많은 pizza들 위에 있다고 생각하는 것보다 자연스럽기 때문입니다. 이와 같이 일반적으로 **ManyToManyField** instance는 폼에서 수정되어야 하는 객체 안에 있어야 합니다. 
 
 **See also**<br><br>전체 예시를 보기 위해서는 `Many-to-many relationship model example`을 참조하십시오.
 {: .notice--info}
 
-**ManyToManyField** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있습니다. 이 옵션들은 relationship이 어떻게 작동할지 규정합니다; 모두 optional입니다.
+**ManyToManyField** field는 `model field references`에 설명되어 있는 다른 arguements도 사용할 수 있습니다. 이 옵션들은 관계가 어떻게 작동할지 규정합니다; 모두 선택적입니다.
 
 ---
 
-### Extra fields on many-to-many relationships
+#### Extra fields on many-to-many relationships
 
 pizza와 topping과 같은 단순한 many-to-many relationship을 다루고 있다면, **ManyToManyField**만 사용하시면 됩니다. 하지만, 때때로 relationship이 있는 두 models간의 데이터들을 연결지어야 할 것입니다.
 
