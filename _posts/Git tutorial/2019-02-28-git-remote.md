@@ -37,7 +37,7 @@ origin    https://github.com/seonkyuKim/doClone.git (push)
 
 ## 리모트 저장소 추가하기(git remote add)
 
-`git remote add <remoteName> <url>`명령어를 이용하여 해당 &lt;url&gt;의 리모트 저장소를 쉽게 등록할 수 있습니다. &lt;remoteName&gt;은 사용할 리모트 저장소의 이름입니다. 예시를 보십시오:
+`git remote add <remoteName> <url>`명령어를 이용하여 해당 &lt;url&gt;의 리모트 저장소를 쉽게 등록할 수 있습니다. &lt;remoteName&gt;은 사용할 리모트 저장소의 이름입니다. [07: GitHub 시작하기](https://seonkyukim.github.io/git-tutorial/starting-github/#)에서 만든 여러분의 저장소 주소를 이용하여 리모트 저장소를 만들어 보십시오. 다음은 예시입니다:
 
 ```shell
 $ git remote add origin https://github.com/seonkyuKim/doClone.git

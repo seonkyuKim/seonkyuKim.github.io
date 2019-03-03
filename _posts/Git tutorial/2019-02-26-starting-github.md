@@ -30,7 +30,7 @@ Create repository 버튼을 누르시면 다음 화면과 같이 나올 것입�
 
 여러분은 이제 로컬 컴퓨터에서 작업한 내용들을 GitHub에 올려 다른 사람들과 공유할 수 있습니다. 또한 GitHub를 돌아다니며 다른 사람들의 작업들을 볼 수도 있습니다. 
 
-사실, 여러분이 보고 계신 이 블로그도 GitHub를 이용하여 만든 것입니다. 즉, 여러분은 `git clone`과 같은 명령어로 언제든 제 블로그 전체를 복사하실 수 있습니다. [https://github.com/seonkyuKim/seonkyuKim.github.io](https://github.com/seonkyuKim/seonkyuKim.github.io)로 이동하시면 제 블로그 구조, 제가 한 커밋들을 모두 보실 수 있습니다. 여러분도 07: 리모트 저장소(git remote)를 배우신 후 여러분만의 GitHub 저장소를 이용하세요!
+사실, 여러분이 보고 계신 이 블로그도 GitHub를 이용하여 만든 것입니다. 즉, 여러분은 `git clone`과 같은 명령어로 언제든 제 블로그 전체를 복사하실 수 있습니다. [https://github.com/seonkyuKim/seonkyuKim.github.io](https://github.com/seonkyuKim/seonkyuKim.github.io)로 이동하시면 제 블로그 구조, 제가 한 커밋들을 모두 보실 수 있습니다. 여러분도 [07: GitHub 시작하기](https://seonkyukim.github.io/git-tutorial/starting-github/)를 배우신 후 여러분만의 GitHub 저장소를 이용하세요!
 
 ## GitHub 둘러보기
 GitHub 가입을 마치셨으면 한 번 둘러보시길 바랍니다. 다음 글을 참고하세요: [https://meetup.toast.com/posts/141](https://meetup.toast.com/posts/141)

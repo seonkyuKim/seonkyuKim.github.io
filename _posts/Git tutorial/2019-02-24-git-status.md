@@ -13,7 +13,7 @@ author_profile: true
 {: .notice--warning}
 
 <figure class="align-center">
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/2019-02-24-git-status/Untitled-36f780e4-6dbd-4fc5-9782-778beffcf2e5.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/2019-02-24-git-status/04.png" alt="">
 <figcaption>(사진: <a href="https://git-scm.com/book/ko/v2/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%EC%88%98%EC%A0%95%ED%95%98%EA%B3%A0-%EC%A0%80%EC%9E%A5%EC%86%8C%EC%97%90-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0">https://git-scm.com/book/ko/v2/Git의-기초-수정하고-저장소에-저장하기</a>)</figcaption>
 </figure> 
 
@@ -50,7 +50,7 @@ author_profile: true
 
 ![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-24-git-status/03.png){: .align-center}
 
-**하나의 파일이 두 개의 상태가 가능한가요?**<br><br>위의 화면을 보시면 **tracked.txt**파일이 Staged 상태에도 있고 Modified 상태에도 있는 것을 확인할 수 있습니다. 04: 파일 Git에 저장하기에서 Staging Area에 있는 파일은 워킹 디렉토리의 파일이 **옮겨지는 것이 아니라 복사되는 것**이라는 점 기억하시나요? 그렇기 때문에 `git add`를 한 후 그 파일을 수정하게 되면 Staging Area에 있는 파일에는 수정내용이 반영되지 않습니다. 따라서 하나의 파일이 위와 같은 두 개의 상태를 가질 수 있습니다.
+**하나의 파일이 두 개의 상태가 가능한가요?**<br><br>위의 화면을 보시면 **tracked.txt**파일이 Staged 상태에도 있고 Modified 상태에도 있는 것을 확인할 수 있습니다. [04: 파일 커밋하기(git add, commit)](https://seonkyukim.github.io/git-tutorial/git-add-commit/)에서 Staging Area에 있는 파일은 워킹 디렉토리의 파일이 **옮겨지는 것이 아니라 복사되는 것**이라는 점 기억하시나요? 그렇기 때문에 `git add`를 한 후 그 파일을 수정하게 되면 Staging Area에 있는 파일에는 수정내용이 반영되지 않습니다. 따라서 하나의 파일이 위와 같은 두 개의 상태를 가질 수 있습니다.
 {: .notice--info}
 
 ## Unmodified

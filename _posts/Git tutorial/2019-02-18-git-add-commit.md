@@ -14,7 +14,7 @@ author_profile: true
     This is sample file
 
 
->  파일 만들기에 어려움을 느끼시는 분께서는 *기본적인 리눅스/유닉스 명령어*를 보고 오시기 바랍니다.
+>  파일 만들기에 어려움을 느끼시는 분께서는 [02: 기본적인 리눅스/유닉스 명령어](https://seonkyukim.github.io/git-tutorial/basic-cmd/)를 보고 오시기 바랍니다.
 
 `git add` 명령어를 사용하여 저장소에 저장할 수 있습니다:
 
