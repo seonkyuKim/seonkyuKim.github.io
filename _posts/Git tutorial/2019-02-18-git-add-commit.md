@@ -1,5 +1,5 @@
 ---
-title: "04: 파일 Git에 저장하기(git add, commit)"
+title: "04: 파일 커밋하기(git add, commit)"
 categories: git-tutorial
 tags:
 - git
@@ -32,7 +32,7 @@ $ git commit -m "first commit"
 
 다음과 같이 표시된다면 첫 번째 커밋을 성공적으로 완료하신 겁니다:
 
-![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-23-git-tutorial-04-addcommit/01.png){: .align-center}
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-18-git-add-commit/01.png){: .align-center}
 
 축하드립니다! 첫 번째 커밋을 완료했습니다. 이제 언제든지 "first commit"이 '스냅샷'으로 저장되어 언제든 해당 버전으로 돌아갈 수 있습니다.
 
@@ -55,21 +55,21 @@ git에는 **크게 3가지 공간**이 있습니다. 작업을 하고 있는 로
 
 위에서 **sample.txt** 파일을 만들었을 때, 파일이 저장되는 로컬 컴퓨터의 공간이 **워킹 디렉토리**입니다. **sample.txt** 파일을 처음 만들게 된다면 다음과 같이 워킹 디렉토리에 존재할 것입니다:
 
-![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-23-git-tutorial-04-addcommit/02.png){: .align-center}
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-18-git-add-commit/02.png){: .align-center}
 
 이제 이 파일을 영구적으로 저장하기 위해서는 먼저 **스테이징 에어리어**에 저장하고 싶은 파일들의 정보를 등록해주어야 합니다.  `git add <filename>` 명령어를 사용하여 자기소개서를 스테이징 에어리어에 올려줍시다. 이때, 워킹 디렉토리의 파일을 **옮기는 것이 아니라 복사**한다고 생각해야합니다. 즉, 워킹 디렉토리의 파일을 수정해도, 스테이징 에어리어의 파일에는 반영되지 않습니다:
 
-![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-23-git-tutorial-04-addcommit/03.png){: .align-center}
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-18-git-add-commit/03.png){: .align-center}
 
 이제 **스테이징 에어리어에 있는 파일들을 가지고** 최종적으로 Git 저장소에 저장하여 영구적인 스냅샷으로 저장합시다. `git commit <filename>` 명령어를 **커밋**이 완료됩니다.:
 
-![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-23-git-tutorial-04-addcommit/04.png){: .align-center}
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-18-git-add-commit/04.png){: .align-center}
 
 
 하나의 그림으로 나타내면 다음과 같습니다:
 
 <figure class="align-center">
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/2019-02-23-git-tutorial-04-addcommit/05.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/2019-02-18-git-add-commit/05.png" alt="">
 <figcaption>(사진: <a href="https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-Git-%EA%B8%B0%EC%B4%88">https://git-scm.com/book/ko/v2/시작하기-Git-기초</a>)</figcaption>
 </figure> 
 
@@ -80,13 +80,13 @@ git에는 **크게 3가지 공간**이 있습니다. 작업을 하고 있는 로
 {: .notice--info}
 
 
-## 커밋 메세지
+## 커밋 메세지(git commit -m)
 
 커밋을 할 때는 해당 커밋을 설명하는 메세지를 같이 저장해야 합니다. 계속해서 커밋을 만들게 되면, 변경 사항이 무엇인지 헷갈릴 것입니다. 이때, 그것을 기록하기 위한 용도로 해당 커밋을 설명하는 메세지를 작성해야 합니다.   `-m "fisrt commit"`의 의미는 커밋 메세지로 "first commit"를 저장하라는 의미입니다.
 
 만일 `-m` 옵션 없이 `git commit sample.txt`만 입력했을 경우 다음과 같이 커밋 메세지를 작성할 수 있는 창이 뜹니다:
 
-![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-23-git-tutorial-04-addcommit/06.png){: .align-center}
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-18-git-add-commit/06.png){: .align-center}
 
 당황하지 마시고 INSERT모드로 바꾸신 후 메세지를 첫 줄에 입력하고 저장하시면 됩니다. **만약 아무런 메세지를 입력하지 않을 경우 커밋되지 않습니다.**
 
@@ -133,4 +133,21 @@ $ git commit -a -m "first commit"
 
 **Note**<br><br>편리하다고 생각하실 수 있지만, 이는 저장하지 말아야 할 변경사항까지 모두 추가할 가능성이 있습니다. 따라서 이 기능을 사용하실 때는 주의하시기 바랍니다. 
 {: .notice--warning}
-<br>
+
+
+## 커밋 수정하기(git commit --amend)
+
+프로젝트를 진행하게 되면 계속해서 커밋을 하게 됩니다. 이때 자잘한 부분의 수정을 까먹고 다시 커밋을 만드는 경우가 굉장히 많습이다. 예를 들어 저는 커밋 메세지로 "fix", "fix again", "fix again...x2", "please fix!"와 같이 커밋 메세지를 만들었었습니다. 
+
+하지만 여기서 커밋을 왜 하고 커밋 메세지를 왜 작성하는지 다시 생각해 볼 필요가 있습니다. 그 이유는 **변경한 체크포인트를 기록하기 위함입니다.** 그렇다면 자잘한 변경사항들을 굳이 여러 개의 커밋으로 기록할 필요가 있을까요? 이런 경우는 과감히 하나의 커밋으로 합쳐주는 것이 좋습니다.
+
+이렇게 다시 커밋하고 수정하고 싶은 경우 **변경 사항을 add한 후, `--amend` 옵션과 함께 다음 커밋을 해주시면 됩니다.** 커밋 메세지를 수정하고 싶은 경우에도 이 옵션을 사용합니다.
+
+```shell
+$ git commit --amend
+```
+
+
+**Note**<br><br>커밋은 사실 수정이 불가능합니다. 위의 작업은 기존 커밋을 수정하는 것이 아니라, 두 번째 커밋이 첫 번째 커밋을 완전히 덮어 쓰는 것입니다. 이전의 커밋은 일어나지 않은 일이 되는 것이고 히스토리에도 남지 않습니다.
+{: .notice--warning}
+
