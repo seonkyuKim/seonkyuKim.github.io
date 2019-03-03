@@ -1,5 +1,5 @@
 ---
-title: "07: 리모트 저장소(git remote)"
+title: "08: 리모트 저장소(git remote)"
 categories: git-tutorial
 tags:
 - git
@@ -45,14 +45,15 @@ $ git remote add origin https://github.com/seonkyuKim/doClone.git
 
 ## 리모트 저장소에 push하기(git push)
 
-로컬 디렉토리에 저장된 커밋을 리모트 저장소에 옮기는 것을 **push**한다고 합니다. (반대로 리모트 저장소에 있는 내용을 가져오는 것을 **pull**한다고 합니다.) [git book](https://git-scm.com/book/ko/v2) "[1.1 시작하기 - 버전관리란?](https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC%EB%9E%80%3F)"에 나온 내용을 잠깐 다시 보고자 합니다.
+로컬 디렉토리에 저장된 커밋을 리모트 저장소에 옮기는 것을 **push**한다고 합니다. 반대로 리모트 저장소에 있는 내용을 가져오는 것을 **pull**한다고 합니다.
+
+**push**와 **pull**을 할 때 한 가지 유의하셔야 하는 점은 변경 사항만을 **push**하고 **pull**하는 것이 아니라는 점입니다. [git book](https://git-scm.com/book/ko/v2) "[1.1 시작하기 - 버전관리란?](https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC%EB%9E%80%3F)"에 나온 내용을 잠깐 확인하면, DVCS(분산 버전 관리 시스템)은 단순히 파일의 마지막 커밋만을 저장하지 않습니다. 그냥 저장소를 히스토리와 더불어 전부 복제합니다. 
 
 <figure class="align-center">
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/2019-2-20-git-기초/Untitled-f1197653-b761-429e-81a7-84e77c699821.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/2019-02-28-git-remote/01.png" alt="">
 <figcaption>(사진: <a href="https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC%EB%9E%80%3F">https://git-scm.com/book/ko/v2/시작하기-버전-관리란%3F</a>)</figcaption>
 </figure> 
 
-DVCS(분산 버전 관리 시스템)은 단순히 파일의 마지막 커밋만을 저장하지 않습니다. 그냥 저장소를 히스토리와 더불어 전부 복제합니다. 
 
 로컬 저장소에 있는 모든 커밋을 리모트 저장소로 보내기 위해서는 `git push <remoteName> <branchName>` 명령어를 사용하면 됩니다. 반대로 리모트 저장소의 커밋을 로컬 저장소에 가져오기 위해서는 `git pull <remoteName> <branchName>` 명령어를 사용하시면 됩니다. 브랜치를 모르시는 분들은 기본적으로 master에 있다는 점만 기억하시고 다음과 같이 사용하시면 됩니다:
 

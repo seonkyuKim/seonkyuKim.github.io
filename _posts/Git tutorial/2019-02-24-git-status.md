@@ -1,5 +1,5 @@
 ---
-title: "05: 파일 상태 확인하기(git status)"
+title: "06: 파일 상태 확인하기(git status)"
 categories: git-tutorial
 tags:
 - git
@@ -13,7 +13,7 @@ author_profile: true
 {: .notice--warning}
 
 <figure class="align-center">
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/2019-2-20-git-기초/Untitled-36f780e4-6dbd-4fc5-9782-778beffcf2e5.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/2019-02-24-git-status/Untitled-36f780e4-6dbd-4fc5-9782-778beffcf2e5.png" alt="">
 <figcaption>(사진: <a href="https://git-scm.com/book/ko/v2/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%EC%88%98%EC%A0%95%ED%95%98%EA%B3%A0-%EC%A0%80%EC%9E%A5%EC%86%8C%EC%97%90-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0">https://git-scm.com/book/ko/v2/Git의-기초-수정하고-저장소에-저장하기</a>)</figcaption>
 </figure> 
 
@@ -27,4 +27,32 @@ author_profile: true
 {: .notice--warning}
 
 
-작성중
+## Untracked
+
+`git status` 명령어를 실행했을 때 다음과 같은 화면에서 **Untracked files** 명단에 있는 빨간색 파일들이 Untracked 상태의 파일들입니다:
+
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-24-git-status/01.png){: .align-center}
+
+>git을 시작한 폴더에서 **untracked.txt**파일을 새로 만들고 `git status` 명령어를 실행한 화면입니다.
+
+
+## Staged
+
+`git status` 명령어를 실행했을 때 다음과 같은 화면에서 **Changes to be committed** 명단에 있는 초록색 파일들이 Staged 상태의 파일들입니다:
+
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-24-git-status/02.png){: .align-center}
+
+>**tracked.txt** 파일을 만들어 `git add`를 한 후 `git status` 명령어를 실행한 화면입니다.
+
+## Modified
+
+`git status` 명령어를 실행했을 때 다음과 같은 화면에서 **Changes not staged for commit** 명단에 있는 빨간색 파일들이 Modified 상태의 파일들입니다.
+
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-24-git-status/03.png){: .align-center}
+
+**하나의 파일이 두 개의 상태가 가능한가요?**<br><br>위의 화면을 보시면 **tracked.txt**파일이 Staged 상태에도 있고 Modified 상태에도 있는 것을 확인할 수 있습니다. 04: 파일 Git에 저장하기에서 Staging Area에 있는 파일은 워킹 디렉토리의 파일이 **옮겨지는 것이 아니라 복사되는 것**이라는 점 기억하시나요? 그렇기 때문에 `git add`를 한 후 그 파일을 수정하게 되면 Staging Area에 있는 파일에는 수정내용이 반영되지 않습니다. 따라서 하나의 파일이 위와 같은 두 개의 상태를 가질 수 있습니다.
+{: .notice--info}
+
+## Unmodified
+
+성공적으로 커밋을 진행한 후에 `git status` 명령어를 실행하면 Unmodified 상태의 파일은 화면에 출력되지 않습니다. 다만 주의하실 점은 `git commit` 명령어는 Staging Area의 파일들을 커밋한다는 점입니다. 따라서 `git add`를 한 후 그 파일을 수정한 경우, 다시 `git add`를 이용해 변경 파일을 Staging Area에 올려주지 않고 `git commit`을 진행한다면 변경 이전의 파일이 커밋됩니다.
