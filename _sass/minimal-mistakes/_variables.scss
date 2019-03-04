@@ -29,8 +29,8 @@ $bodoni: "Bodoni MT", serif !default;
 $calisto: "Calisto MT", serif !default;
 $garamond: Garamond, serif !default;
 
-$global-font-family: 'Noto Sans KR', $sans-serif !default;
-$header-font-family: 'Noto Sans KR', $sans-serif !default;
+$global-font-family: $sans-serif !default;
+$header-font-family: $sans-serif !default;
 $caption-font-family: $serif !default;
 
 /* type scale */
@@ -52,11 +52,11 @@ $gray: #7a8288 !default;
 $dark-gray: mix(#000, $gray, 40%) !default;
 $darker-gray: mix(#000, $gray, 60%) !default;
 $light-gray: mix(#fff, $gray, 50%) !default;
-$lighter-gray: mix(#fff, $gray, 90%) !default;
+$lighter-gray: mix(#fff, $gray, 65%) !default;
 
 $background-color: #fff !default;
 $code-background-color: #fafafa !default;
-$code-background-color-dark: $light-gray !default;
+$code-background-color-dark: $lighter-gray !default;
 $text-color: $dark-gray !default;
 $muted-text-color: mix(#fff, $text-color, 35%) !default;
 $border-color: $lighter-gray !default;
