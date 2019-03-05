@@ -1,5 +1,5 @@
 ---
-title: "09: 브랜치 시작하기(git branch)"
+title: "10: 브랜치 시작하기(git branch)"
 categories: git-tutorial
 tags:
 - git
@@ -49,13 +49,13 @@ author_profile: true
 
 다음과 같이 `git branch <branchName>` 명령어를 사용하여 서울대 자기소개서를 작성할 **snu** 브랜치를 만듭니다:
 
-```shell
+``` 
 $ git branch snu
 ```
 
 `git branch` 명령어로 어떤 브랜치가 있는지 확인할 수 있습니다:
 
-```shell
+``` 
 $ git branch
 * master
 snu
@@ -69,7 +69,7 @@ snu
 
 **snu** 브랜치로 이동하여 자기소개서를 작성합시다. `git checkout <branchName>` 명령어를 이용하면 됩니다:
 
-```shell
+``` 
 $ git checkout snu
 Switched to branch 'snu'   # 성공적으로 checkout 했을 경우 출력 메세지
 ```

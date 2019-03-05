@@ -1,5 +1,5 @@
 ---
-title: "08: 리모트 저장소(git remote)"
+title: "09: 리모트 저장소(git remote)"
 categories: git-tutorial
 tags:
 - git
@@ -20,14 +20,14 @@ author_profile: true
 
 다음과 같은 명령어로 등록된 리모트 저장소 목록을 확인할 수 있습니다:
 
-```shell
+``` 
 $ git remote
 origin
 ```
 
 리모트 저장소의 이름과 해당 저장소의 경로를 확인하고 싶다면 `-v` 옵션을 추가해주어야 합니다:
 
-```shell
+``` 
 $ git remote -v
 origin    https://github.com/seonkyuKim/doClone.git (fetch)
 origin    https://github.com/seonkyuKim/doClone.git (push)
@@ -39,7 +39,7 @@ origin    https://github.com/seonkyuKim/doClone.git (push)
 
 `git remote add <remoteName> <url>`명령어를 이용하여 해당 &lt;url&gt;의 리모트 저장소를 쉽게 등록할 수 있습니다. &lt;remoteName&gt;은 사용할 리모트 저장소의 이름입니다. [07: GitHub 시작하기](https://seonkyukim.github.io/git-tutorial/starting-github/#)에서 만든 여러분의 저장소 주소를 이용하여 리모트 저장소를 만들어 보십시오. 다음은 예시입니다:
 
-```shell
+``` 
 $ git remote add origin https://github.com/seonkyuKim/doClone.git
 ```
 
@@ -58,7 +58,7 @@ $ git remote add origin https://github.com/seonkyuKim/doClone.git
 로컬 저장소에 있는 모든 커밋을 리모트 저장소로 보내기 위해서는 `git push <remoteName> <branchName>` 명령어를 사용하면 됩니다. 반대로 리모트 저장소의 커밋을 로컬 저장소에 가져오기 위해서는 `git pull <remoteName> <branchName>` 명령어를 사용하시면 됩니다. 브랜치를 모르시는 분들은 기본적으로 master에 있다는 점만 기억하시고 다음과 같이 사용하시면 됩니다:
 
 
-```shell
+``` 
 # push
 $ git push origin master
 

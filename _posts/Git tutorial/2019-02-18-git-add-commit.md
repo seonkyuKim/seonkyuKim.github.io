@@ -14,18 +14,18 @@ author_profile: true
     This is sample file
 
 
->  파일 만들기에 어려움을 느끼시는 분께서는 [02: 기본적인 리눅스/유닉스 명령어](https://seonkyukim.github.io/git-tutorial/basic-cmd/)를 보고 오시기 바랍니다.
+>  파일 만들기에 어려움을 느끼시는 분께서는 [02: 기본적인 명령어](https://seonkyukim.github.io/git-tutorial/basic-cmd/)를 보고 오시기 바랍니다.
 
 `git add` 명령어를 사용하여 저장소에 저장할 수 있습니다:
 
-```shell
+``` 
 $ git add sample.txt
 ```
 <br>
 
 아쉽게도 아직은 완벽히 저장되지 않았습니다. `git commit` 명령어를 이용하여 '영구적인 스냅샷'인 커밋을 완료해 봅니다(이해가 안되시더라도 일단 따라해 봅시다):
 
-```shell
+``` 
 $ git commit -m "first commit"
 ```
 <br>
@@ -61,6 +61,8 @@ git에는 **크게 3가지 공간**이 있습니다. 작업을 하고 있는 로
 
 ![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-18-git-add-commit/03.png){: .align-center}
 
+>`git add .` 명령어를 사용하시면 현재 폴더 안의 모든 파일들을 add할 수 있습니다.
+
 이제 **스테이징 에어리어에 있는 파일들을 가지고** 최종적으로 Git 저장소에 저장하여 영구적인 스냅샷으로 저장합시다. `git commit <filename>` 명령어를 **커밋**이 완료됩니다.:
 
 ![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-02-18-git-add-commit/04.png){: .align-center}
@@ -94,11 +96,13 @@ git에는 **크게 3가지 공간**이 있습니다. 작업을 하고 있는 로
 
 git에는 [커밋 메세지 가이드라인](https://gist.github.com/robertpainsi/b632364184e70900af4ab688decf6f53)이 있습니다. 가이드라인은 다음과 같습니다:
 
-- 제목과 본문은 빈 줄로 띄어 쓰십시오
+>영문 기준입니다.
+
+- 제목과 본문은 한 줄로 띄어 분리하십시오
 - 제목을 온점으로 끝내지 마십시오
 - 제목과 각 문단의 첫 글자는 대문자로 쓰십시오
-- 제목에 긴급한 분위기를 쓰십시오
-- 72글자 이내로 작성하십시오
+- 제목은 명령조로 쓰십시오
+- 한 문단은 72글자 이내로 작성하십시오
 - 본문에 무엇을 했고 왜 했는지 적으십시오. 대부분의 경우 변화가 일어난 세부 사항은 생략할 수 있습니다.
 
 커밋 메세지 예는 다음과 같습니다:
@@ -127,7 +131,7 @@ single space. Use a hanging indent.
 
 `git commit -a` 옵션을 사용할 경우 `git add`의 과정을 거치지 않고 바로 커밋을 할 수 있습니다. 
 
-```shell
+``` 
 $ git commit -a -m "first commit"
 ```
 
@@ -143,7 +147,7 @@ $ git commit -a -m "first commit"
 
 이렇게 다시 커밋하고 수정하고 싶은 경우 **변경 사항을 add한 후, `--amend` 옵션과 함께 다음 커밋을 해주시면 됩니다.** 커밋 메세지를 수정하고 싶은 경우에도 이 옵션을 사용합니다.
 
-```shell
+``` 
 $ git commit --amend
 ```
 

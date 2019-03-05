@@ -1,5 +1,5 @@
 ---
-title: "06: 파일 상태 확인하기(git status)"
+title: "07: 파일 상태 확인하기(git status)"
 categories: git-tutorial
 tags:
 - git

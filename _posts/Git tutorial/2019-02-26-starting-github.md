@@ -1,5 +1,5 @@
 ---
-title: "07: GitHub 시작하기"
+title: "08: GitHub 시작하기"
 categories: git-tutorial
 tags:
 - git
