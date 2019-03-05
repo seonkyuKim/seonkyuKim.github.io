@@ -6,7 +6,7 @@
    Typography
    ========================================================================== */
 
-$doc-font-size: 16 !default;
+$doc-font-size: 13 !default;
 
 /* paragraph indention */
 $paragraph-indent: false !default; // true, false (default)
@@ -17,6 +17,8 @@ $serif: Georgia, Times, serif !default;
 $sans-serif: -apple-system, BlinkMacSystemFont,"Noto Sans KR", "Roboto", "Segoe UI",
   "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
 $monospace: Monaco, Consolas, "Lucida Console", monospace !default;
+$noto-sans: "Noto Sans KR", sans-serif;
+$nanum-gothic: "Nanum Gothic", sans-serif;
 
 /* sans serif typefaces */
 $sans-serif-narrow: $sans-serif !default;
@@ -29,8 +31,8 @@ $bodoni: "Bodoni MT", serif !default;
 $calisto: "Calisto MT", serif !default;
 $garamond: Garamond, serif !default;
 
-$global-font-family: $sans-serif !default;
-$header-font-family: $sans-serif !default;
+$global-font-family: $nanum-gothic !default;
+$header-font-family: $nanum-gothic !default;
 $caption-font-family: $serif !default;
 
 /* type scale */
