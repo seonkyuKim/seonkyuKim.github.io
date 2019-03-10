@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	  	  
+<!-- www.check-domains.com sitemap generator -->
+
+<url>
+   <loc>https://seonkyukim.github.io/</loc>
+   <lastmod>2019-02-12T15:45:32+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.8000</priority>
+</url>
+<url>
+   <loc>https://seonkyuKim.github.io/feed.xml</loc>
+   <lastmod>2019-02-13T09:53:32+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://seonkyukim.github.io/tech/index/</loc>
+   <lastmod>2019-02-12T15:45:32+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.5120</priority>
+</url>
+<url>
+   <loc>https://seonkyukim.github.io/project/index/</loc>
+   <lastmod>2019-02-12T15:45:32+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.5120</priority>
+</url>
+<url>
+   <loc>https://seonkyukim.github.io/reference/index/</loc>
+   <lastmod>2019-02-12T15:45:32+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.5120</priority>
+</url>
+<url>
+   <loc>https://seonkyukim.github.io/insight/index/</loc>
+   <lastmod>2019-02-12T15:45:32+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.5120</priority>
+</url>
+<url>
+   <loc>https://seonkyukim.github.io/wine/index/</loc>
+   <lastmod>2019-02-12T15:45:32+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.5120</priority>
+</url>
+<url>
+   <loc>https://seonkyukim.github.io/tags/</loc>
+   <lastmod>2019-02-12T15:45:32+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.5120</priority>
+</url>
+<url>
+   <loc>https://seonkyukim.github.io/reference/Field-options/</loc>
+   <lastmod>2019-02-12T15:45:32+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.5120</priority>
+</url>
+<url>
+   <loc>https://seonkyukim.github.io/reference/Introduction-to-models-1/</loc>
+   <lastmod>2019-02-12T15:45:32+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.5120</priority>
+</url>
+</urlset>
