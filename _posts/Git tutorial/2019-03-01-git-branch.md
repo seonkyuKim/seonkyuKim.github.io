@@ -74,7 +74,7 @@ $ git checkout snu
 Switched to branch 'snu'   # 성공적으로 checkout 했을 경우 출력 메세지
 ```
 
-**master** 브랜치에서 **sad** 브랜치로 이동했기 때문에 이제 **HEAD**가 **sad** 브랜치를 가리키고 있습니다:
+**master** 브랜치에서 **snu** 브랜치로 이동했기 때문에 이제 **HEAD**가 **snu** 브랜치를 가리키고 있습니다:
 
 ![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-03-01-git-branch/08.png){: .align-center}
 
