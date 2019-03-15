@@ -56,3 +56,15 @@ author_profile: true
 ## Unmodified
 
 성공적으로 커밋을 진행한 후에 `git status` 명령어를 실행하면 Unmodified 상태의 파일은 화면에 출력되지 않습니다. 다만 주의하실 점은 `git commit` 명령어는 Staging Area의 파일들을 커밋한다는 점입니다. 따라서 `git add`를 한 후 그 파일을 수정한 경우, 다시 `git add`를 이용해 변경 파일을 Staging Area에 올려주지 않고 `git commit`을 진행한다면 변경 이전의 파일이 커밋됩니다.
+
+## Modified 파일 되돌리기(git checkout -- <file>)
+
+워킹 디렉토리의 modified 특정 파일을 가장 최근 커밋 버전으로 되돌릴 수 있습니다. 즉, 워킹 디렉토리에서의 수정 사항을 제거합니다. 하지만 이 기능은 되돌릴 수 없으니 주의해 주시기 바랍니다. 다음과 같이 **sample.txt** 파일을 가장 최근 커밋 버전으로 되돌릴 수 있습니다:
+
+```
+$ git checkout -- sample.txt
+```
+
+
+
+
