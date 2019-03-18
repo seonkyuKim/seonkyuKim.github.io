@@ -72,8 +72,13 @@
     border-bottom: 1px solid $border-color;
   }
 
-  ol li {
-    font-size: $type-size-5-5;
+  // ol li {
+  //   font-size: $type-size-5-5;
+  // }
+
+
+  ul p {
+    font-size: 1em;
   }
 
   p,
