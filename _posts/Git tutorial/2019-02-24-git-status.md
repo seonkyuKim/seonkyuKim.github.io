@@ -2,8 +2,7 @@
 title: "07: 파일 상태 확인하기(git status)"
 categories: git-tutorial
 tags:
-- git
-- tutorial
+- git tutorial
 author_profile: true
 ---
 이번에는 git에 의해 관리되는 파일들의 가능한 **상태**(status)에 대해 알아보도록 하겠습니다. **상태**라는 말을 너무 어렵게 생각하실 필요가 없습니다. 앞선 강의에서 파일이 **스테이징 에어리어**를 거쳐 커밋되는 과정을 배웠습니다. 이때 **스테이징 에어리어**에 등록된 파일의 상태는 Staged, 커밋된 파일의 상태는 Unmodified라고 하는데, 이와 같이 각 단계에서 가능한 상태들이 존재합니다. 앞으로 각 상태에 대해 자세히 알아보겠습니다.

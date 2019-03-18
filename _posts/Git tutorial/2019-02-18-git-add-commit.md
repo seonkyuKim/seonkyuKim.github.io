@@ -2,8 +2,7 @@
 title: "04: 파일 커밋하기(git add, commit)"
 categories: git-tutorial
 tags:
-- git
-- tutorial
+- git tutorial
 author_profile: true
 ---
   

@@ -2,8 +2,7 @@
 title: "15: 리모트 브랜치"
 categories: git-tutorial
 tags:
-- git
-- tutorial
+- git tutorial
 author_profile: true
 ---
 

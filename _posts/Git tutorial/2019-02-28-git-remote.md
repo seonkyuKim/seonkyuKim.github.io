@@ -2,8 +2,7 @@
 title: "09: 리모트 저장소(git remote)"
 categories: git-tutorial
 tags:
-- git
-- tutorial
+- git tutorial
 author_profile: true
 ---
 

@@ -2,8 +2,7 @@
 title: "08: GitHub 시작하기"
 categories: git-tutorial
 tags:
-- git
-- tutorial
+- git tutorial
 author_profile: true
 ---
 

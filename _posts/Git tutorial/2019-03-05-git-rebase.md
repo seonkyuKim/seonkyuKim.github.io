@@ -2,8 +2,7 @@
 title: "12: 브랜치 합치기 2(git rebase)"
 categories: git-tutorial
 tags:
-- git
-- tutorial
+- git tutorial
 author_profile: true
 ---
 

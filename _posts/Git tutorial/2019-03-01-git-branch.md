@@ -2,8 +2,7 @@
 title: "10: 브랜치 시작하기(git branch)"
 categories: git-tutorial
 tags:
-- git
-- tutorial
+- git tutorial
 author_profile: true
 ---
 
