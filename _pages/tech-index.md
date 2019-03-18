@@ -1,8 +1,7 @@
 ---
 permalink: /tech/index/
-title: "Django"
+title: "Tech"
 layout: category
 taxonomy: tech
 author_profile: true
 ---
-Tech
