@@ -17,14 +17,16 @@ author_profile: true
 
 ## 분산 환경에서의 워크플로우
 
+'[GitHub를 이용하여 협력하기](https://developer.ibm.com/kr/developer-%EA%B8%B0%EC%88%A0-%ED%8F%AC%EB%9F%BC/2018/02/05/github-collaboration/)'
+
 
 '[우린 Git-flow를 사용하고 있어요 - 우아한 형제들 기술블로그](http://woowabros.github.io/experience/2017/10/30/baemin-mobile-git-branch-strategy.html)'
+
+
+'[Git을 이용한 협업 워크플로우](https://lhy.kr/git-workflow)'
 
 
 '[How to use Git efficiently](https://medium.freecodecamp.org/how-to-use-git-efficiently-54320a236369)'
 
 
 '[5.1 분산 환경에서의 Git - 분산 환경에서의 워크플로](https://git-scm.com/book/ko/v2/%EB%B6%84%EC%82%B0-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%EC%9D%98-Git-%EB%B6%84%EC%82%B0-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%EC%9D%98-%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C)' : git book 5단원 내용이 모두 분산 환경을 다루고 있습니다.
-
-
-'[Git을 이용한 협업 워크플로우](https://lhy.kr/git-workflow)'
