@@ -23,6 +23,9 @@ author_profile: true
 '[우린 Git-flow를 사용하고 있어요 - 우아한 형제들 기술블로그](http://woowabros.github.io/experience/2017/10/30/baemin-mobile-git-branch-strategy.html)'
 
 
+'[Git flow, GitHub flow, GitLab flow](https://ujuc.github.io/2015/12/16/git-flow-github-flow-gitlab-flow/)' : work flow에 다양한 이름이 붙어있습니다. 참고해보세요!
+
+
 '[Git을 이용한 협업 워크플로우](https://lhy.kr/git-workflow)'
 
 
