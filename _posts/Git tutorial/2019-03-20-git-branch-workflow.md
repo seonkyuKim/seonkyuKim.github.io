@@ -1,5 +1,5 @@
 ---
-title: "16: 브랜치 워크플로우(branch workflow)"
+title: "17: 브랜치 워크플로우(branch workflow)"
 categories: git-tutorial
 tags:
 - git tutorial
