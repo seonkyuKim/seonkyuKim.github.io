@@ -88,13 +88,15 @@ Linux 운영체제는 매우 광범위하게 이용된다. 슈퍼 컴퓨터에�
     - **/home** : 각각의 사용자에 대해 사용자 디렉토리가 저장되는 곳.
     - **/var** : 로그 파일과 같은 variable-length 파일들이 저장되는 곳.
 
-(더 자세한 사항을 알고 싶다면 [FHS](https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C_%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0_%ED%91%9C%EC%A4%80)(*file system Hierarchy Standard*)를 살펴보십시오 
+더 자세한 사항을 알고 싶다면 [FHS](https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C_%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0_%ED%91%9C%EC%A4%80)(*file system Hierarchy Standard*)를 살펴보십시오
+{: .notice--info}
 
 ## 프로그램 실행을 어떻게 하는가?
 
 터미널에서 작업을 해봤다면 **cat, cp, ps**와 같은 명령어를 사용했을 것이다. 놀라운 사실은 이런 명령어조차 하나의 응용 프로그램이라는 것이다. 이와 같은 시스템 응용 프로그램은 /sbin, 혹은 /usr/sbin 과 같은 디렉토리 안에 있다. 하지만 위의 명령어를 사용하기 위해서 해당 디렉토리로 이동할 필요가 없다. 이를 가능하게 하는 것이 **$PATH** 변수이다.
 
 CLI로 명령어를 치게 되면, $PATH 변수에 저장된 디렉토리 경로들을 검색하여 해당하는 프로그램을 실행시킨다. 
+
 $PATH 변수는 다음과 같이 확인할 수 있다.
 
     $ echo $PATH
