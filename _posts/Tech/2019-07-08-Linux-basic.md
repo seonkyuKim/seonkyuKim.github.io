@@ -57,6 +57,8 @@ Linux 운영체제는 매우 광범위하게 이용된다. 슈퍼 컴퓨터에�
     Architecture:
 
 **hostname이란?**<br><br>쉽게 말해 IP주소 대신 사람이 읽기 쉬운 형식으로 지어지는 고유 id 값이다<br>자세한 사항은 다음 링크를 잠고하여라: [https://ko.wikipedia.org/wiki/호스트명](https://ko.wikipedia.org/wiki/%ED%98%B8%EC%8A%A4%ED%8A%B8%EB%AA%85)
+{: .notice--info}
+
 
 
 
