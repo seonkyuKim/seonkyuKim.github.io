@@ -60,13 +60,13 @@ Linux 운영체제는 매우 광범위하게 이용된다. 슈퍼 컴퓨터에�
 
 [https://ko.wikipedia.org/wiki/호스트명](https://ko.wikipedia.org/wiki/%ED%98%B8%EC%8A%A4%ED%8A%B8%EB%AA%85)
 
-(쉽게 말해 사람이 IP주소 대신 사람이 읽기 쉬운 형식으로 지어지는 고유 id 값이다)
+(쉽게 말해 IP주소 대신 사람이 읽기 쉬운 형식으로 지어지는 고유 id 값이다)
 
 
 
 ## 리눅스 파일 시스템
 
-파일 시스템은 directory, 혹은 folder라는 개념을 사용해 이뤄진다. 윈도우에서는 파일 시스템이 '파일 탐색기'이다. 윈도우에서는 저장소의 가장 상위 지점이 'C: drive'와 같은 특정 드라이브 명이다. 하지만 Linux의 파일 시스템 가장 상위 지점은 "/", 혹은 "root"이다. 전체적인 구조는 다음과 같다.
+파일 시스템은 directory, 혹은 folder라는 개념을 사용해 이뤄진다. 윈도우에서의 '파일 탐색기'를 생각하면 된다. 윈도우에서는 저장소의 가장 상위 지점이 'C: drive'와 같은 특정 드라이브 명이다. 하지만 Linux의 파일 시스템 가장 상위 지점은 "/", 혹은 "root"이다. 전체적인 구조는 다음과 같다.
 
 ![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-07-08-Linux-basic/01.png){: .align-center}
 
@@ -88,13 +88,14 @@ Linux 운영체제는 매우 광범위하게 이용된다. 슈퍼 컴퓨터에�
     - **/home** : 각각의 사용자에 대해 사용자 디렉토리가 저장되는 곳.
     - **/var** : 로그 파일과 같은 variable-length 파일들이 저장되는 곳.
 
-(더 자세한 사항을 알고 싶다면 FHS(*file system Hierarchy Standard*)를 살펴보십시오: [https://ko.wikipedia.org/wiki/파일시스템_계층구조_표준](https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C_%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0_%ED%91%9C%EC%A4%80))
+(더 자세한 사항을 알고 싶다면 [FHS](https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C_%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0_%ED%91%9C%EC%A4%80)(*file system Hierarchy Standard*)를 살펴보십시오 
 
 ## 프로그램 실행을 어떻게 하는가?
 
-터미널에서 작업을 해봤다면 **cat, cp, ps**와 같은 명령어를 사용했을 것이다. 놀라운 사실은 이런 명령어조차 하나의 응용 프로그램이라는 것이다. 이와 같은 시스템 응용 프로그램은 파일 시스템 안의 /sbin, 혹은 /usr/sbin 과 같은 디렉토리 안에 있다. 하지만 우리는 **cat, cp, ps**와 명령어를 사용하기 위해서 해당 디렉토리로 이동하지 않는다. 이를 가능하게 하는 것이 **$PATH** 변수이다.
+터미널에서 작업을 해봤다면 **cat, cp, ps**와 같은 명령어를 사용했을 것이다. 놀라운 사실은 이런 명령어조차 하나의 응용 프로그램이라는 것이다. 이와 같은 시스템 응용 프로그램은 /sbin, 혹은 /usr/sbin 과 같은 디렉토리 안에 있다. 하지만 위의 명령어를 사용하기 위해서 해당 디렉토리로 이동할 필요가 없다. 이를 가능하게 하는 것이 **$PATH** 변수이다.
 
-CLI로 명령어를 치게 되면, $PATH 변수에 저장된 디렉토리 경로들을 검색하여 해당하는 프로그램을 실행시킨다. $PATH 변수는 다음과 같이 확인할 수 있다.
+CLI로 명령어를 치게 되면, $PATH 변수에 저장된 디렉토리 경로들을 검색하여 해당하는 프로그램을 실행시킨다. 
+$PATH 변수는 다음과 같이 확인할 수 있다.
 
     $ echo $PATH
     /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -159,12 +160,12 @@ Linux는 *system services*의 개념을 사용하고 있다. *system services*�
 
 - **syslog :** 제일 중심적인 로깅 시스템이다. 여기서는 kernel, application 등과 관련된 메시지들을 확인할 수 있다. 조금 더 확장하면 데이터 센터의 모든 로그 파일들을 저장할 수 있다.
 - **auth.log** : 인증(authentication)의 실패와 성공 기록이 담겨있다.
-- **messages** : ****모든 종류의 일반적인 시스템 메시지가 담겨있다.
+- **messages** : 모든 종류의 일반적인 시스템 메시지가 담겨있다.
 
 파일을 확인하는 몇 가지 유용한 명령어들이다.
 
 - **cat**
-- **less** : pagination과 scroll을 통해 파일을 보여준다. ****
+- **less** : pagination과 scroll을 통해 파일을 보여준다.
 - **grep** : 파일 안에 특정 문자열을 찾고 싶을 때 사용한다. **grep PATTERN [FILE]** 과 같이 사용한다.
 - **head** : 파일의 첫 줄을 보여준다.
 - **tail** : 파일의 마지막 줄을 보여준다. 주로 로그 파일을 확인할 때 **tail -f /var/log/syslog** 와 같이 사용한다.
