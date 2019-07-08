@@ -9,7 +9,7 @@ author_profile: true
 Linux를 잘 모르고 다루다보니 항상 stackoverflow를 활용해 주먹구구식으로 문제점들을 해쳐나갔다. 이제는 linux를 공부해 기본적인 것들을 알아야겠다고 느껴 공부하게 되었다.
 
 
-# Why Linux?
+## Why Linux?
 
 ### 일관적인 운영 모델
 
@@ -31,12 +31,12 @@ Linux 운영체제는 매우 광범위하게 이용된다. 슈퍼 컴퓨터에�
 
 몇 가지 명령어로 매우 쉽게 새로운 서비스들을 설치할 수 있다. 간단하게 Apple의 App store, 안드로이드의 Play Store라고 비유할 수 있다. 패키지 매니저의 예시로는 **apt, rpm, yum** 등이 있다.
 
-# 리눅스 사용하기
+## 리눅스 사용하기
 
-## SSH 서버 접속
+### SSH 서버 접속
 
 
-## 리눅스 버전 확인하기
+### 리눅스 버전 확인하기
 
 리눅스에는 매우 많은 버전이 있기 때문에 때때로 자신의 리눅스 버전을 확인해야 할 때가 있다. 이때 **uname** 이라는 명령어를 사용한다.
 
@@ -56,11 +56,7 @@ Linux 운영체제는 매우 광범위하게 이용된다. 슈퍼 컴퓨터에�
     Kernel:
     Architecture:
 
-### hostname이란?
-
-[https://ko.wikipedia.org/wiki/호스트명](https://ko.wikipedia.org/wiki/%ED%98%B8%EC%8A%A4%ED%8A%B8%EB%AA%85)
-
-(쉽게 말해 IP주소 대신 사람이 읽기 쉬운 형식으로 지어지는 고유 id 값이다)
+**hostname이란?**<br><br>쉽게 말해 IP주소 대신 사람이 읽기 쉬운 형식으로 지어지는 고유 id 값이다<br>자세한 사항은 다음 링크를 잠고하여라: [https://ko.wikipedia.org/wiki/호스트명](https://ko.wikipedia.org/wiki/%ED%98%B8%EC%8A%A4%ED%8A%B8%EB%AA%85)
 
 
 
@@ -117,7 +113,7 @@ $PATH 변수는 다음과 같이 확인할 수 있다.
 - **apt install (프로그램명)** : 프로그램 다운로드
 - **apt show (프로그램명)** : 프로그램 인스톨 확인
 
-# Linux Processes, Programs, and Services
+## Linux Processes, Programs, and Services
 
 프로그램을 실행시킬 때 터미널에서 정보를 주고받을 것이다. 하지만, 이 프로그램을 background에서 실행하기 원할 수 있다(service라 부른다). 이 경우, background에서 실행을 한 뒤, 완료되면 알림을 받게 된다.
 
@@ -156,7 +152,7 @@ Linux는 *system services*의 개념을 사용하고 있다. *system services*�
                │   ├─user@1000.service
     ...
 
-# 로그 파일 확인하기
+## 로그 파일 확인하기
 
 시스템의 로그 파일을 확인하는 것은 매우 중요한데, 대부분의 시스템 로그 파일들은 /var/log에 있다. /var/log 디렉토리로 이동한 후 ls -l 명령어로 시스템 로그 파일들을 확인할 수 있다.
 
@@ -172,7 +168,7 @@ Linux는 *system services*의 개념을 사용하고 있다. *system services*�
 - **head** : 파일의 첫 줄을 보여준다.
 - **tail** : 파일의 마지막 줄을 보여준다. 주로 로그 파일을 확인할 때 **tail -f /var/log/syslog** 와 같이 사용한다.
 
-# Users and Superusers
+## Users and Superusers
 
 리눅스에서 사용자를 생성하고 수정하고 삭제하는 것이 가능하다.
 
