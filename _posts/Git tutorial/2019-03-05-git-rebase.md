@@ -26,6 +26,7 @@ $ git rebase master
 **Note**<br><br>`git merge`와는 반대로, **iss15** 브랜치로 이동한 후 **master**브랜치로 rebase한다는 점에 주의하십시오.
 {: .notice--warning}
 
+
 ## 주의사항
 
 절대로 리모트 저장소에 push한 코드에 대해서는 `git rebase`를 사용하지 마십시오. 이는 커밋 히스토리를 조작하기 때문에 엄청난 혼란을 야기합니다. 자세한 내용에 대해서는 '[3.6 Git 브랜치 - Rebase하기](https://git-scm.com/book/ko/v2/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-Rebase-%ED%95%98%EA%B8%B0#_merge_rebase_work)'의 예시를 참고하시기 바랍니다.

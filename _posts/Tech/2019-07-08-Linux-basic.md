@@ -40,13 +40,12 @@ Linux 운영체제는 매우 광범위하게 이용된다. 슈퍼 컴퓨터에�
 
 리눅스에는 매우 많은 버전이 있기 때문에 때때로 자신의 리눅스 버전을 확인해야 할 때가 있다. 이때 **uname** 이라는 명령어를 사용한다.
 
-<pre>
-$ <b>uname -a</b>
-</pre>
+
+    $ uname -a
 
 또한 hostname, machine ID 등을 확인하기 위해서는 **hostnamectl** 이라는 명령어를 사용한다.
 
-    $ **hostnamectl**
+    $ hostnamectl
     
     
     Static hostname: debian
@@ -63,26 +62,28 @@ $ <b>uname -a</b>
 
 (쉽게 말해 사람이 IP주소 대신 사람이 읽기 쉬운 형식으로 지어지는 고유 id 값이다)
 
+
+
 ## 리눅스 파일 시스템
 
 파일 시스템은 directory, 혹은 folder라는 개념을 사용해 이뤄진다. 윈도우에서는 파일 시스템이 '파일 탐색기'이다. 윈도우에서는 저장소의 가장 상위 지점이 'C: drive'와 같은 특정 드라이브 명이다. 하지만 Linux의 파일 시스템 가장 상위 지점은 "/", 혹은 "root"이다. 전체적인 구조는 다음과 같다.
 
-![](Untitled-23b0a5e6-bad1-4a71-87ad-c78aea3a198d.png)
+![]({{ site.url }}{{ site.baseurl }}/assets/images/2019-07-08-Linux-basic/01.png){: .align-center}
 
-출처: Linux Networking 101. Author: David M. Davis, ActualTech Media. ActualTechMedia
+출처: David M. Davis. _Linux Networking 101_ ActualTech Media. ActualTechMedia
 
 ### 기본적인 파일 시스템 관련 명령어
 
-- pwd
-- ls. 파일에 관한 메타 데이터를 같이 확인하고 싶다면, ls -la
-- cd
-- rm
-- mkdir, rmdir
+- **pwd**
+- **ls**. 파일에 관한 메타 데이터를 같이 확인하고 싶다면, ls -la
+- **cd**
+- **rm**
+- **mkdir, rmdir**
 
 ### Linux 파일 시스템의 중요한 디렉토리들
 
 - **/bin, /sbin, /usr/bin,** and **/usr/sbin** : 실행 가능한 프로그램들이 저장되는 곳.
-- **/dev** : ****하드웨어 기기들을 나타내는 파일들이 저장되는 곳. 예를 들어 플로피 디스크를 갖고 있다면, **/dev/fd0** 디렉토리의 **fd0**
+- **/dev** : 하드웨어 기기들을 나타내는 파일들이 저장되는 곳. 예를 들어 플로피 디스크를 갖고 있다면, **/dev/fd0** 디렉토리의 **fd0**
 - **/etc** : Configuration 파일이 저장되는 곳.
     - **/home** : 각각의 사용자에 대해 사용자 디렉토리가 저장되는 곳.
     - **/var** : 로그 파일과 같은 variable-length 파일들이 저장되는 곳.
@@ -95,7 +96,7 @@ $ <b>uname -a</b>
 
 CLI로 명령어를 치게 되면, $PATH 변수에 저장된 디렉토리 경로들을 검색하여 해당하는 프로그램을 실행시킨다. $PATH 변수는 다음과 같이 확인할 수 있다.
 
-    $ **echo $PATH**
+    $ echo $PATH
     /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 만약 실행시키고자 하는 프로그램이 $PATH 안에 없다면, 직접 해당 프로그램이 존재하는 디렉토리로 이동하여 실행을 시키거나, 실행시키고자 하는 프로그램의 전체 경로를 입력해주어야 한다.
@@ -104,7 +105,7 @@ CLI로 명령어를 치게 되면, $PATH 변수에 저장된 디렉토리 경로
 
 실행하고자 하는 프로그램이 어떤 경로에 있는지 확인하기 위해서는 **which** 명령어를 사용하면 된다. 예를 들어 python에는 다양한 버전이 있으며, 사용하고 있는 python이 어느 경로의 python인지 확인하기 위해 사용한다.
 
-    $ **which python**
+    $ which python
     /usr/bin/python
 
 ### 프로그램 설치
@@ -131,7 +132,7 @@ CLI로 명령어를 치게 되면, $PATH 변수에 저장된 디렉토리 경로
 
 만약 여러분이 실행 중인 프로세스들을 보고 싶다면 **ps** 명령어를 사용해라.
 
-    $ **ps**
+    $ ps
     PID TTY          TIME CMD
     11637 pts/1    00:00:00 bash
     11649 pts/1    00:00:00 ps
@@ -140,7 +141,7 @@ CLI로 명령어를 치게 되면, $PATH 변수에 저장된 디렉토리 경로
 
 Linux는 *system services*의 개념을 사용하고 있다. *system services*란 주로 시스템 사용자 대신 서비스를 제공하는 백그라운드에서 실행되는 프로그램들이다. **systemctl** 명령어로 확인할 수 있다.
 
-    $ **systemctl**
+    $ systemctl
     - debian
         State: running
          Jobs: 0 queued
@@ -152,7 +153,7 @@ Linux는 *system services*의 개념을 사용하고 있다. *system services*�
                │   ├─user@1000.service
     ...
 
-# Importance of Linux Log Files
+# 로그 파일 확인하기
 
 시스템의 로그 파일을 확인하는 것은 매우 중요한데, 대부분의 시스템 로그 파일들은 /var/log에 있다. /var/log 디렉토리로 이동한 후 ls -l 명령어로 시스템 로그 파일들을 확인할 수 있다.
 
@@ -176,16 +177,18 @@ Linux는 *system services*의 개념을 사용하고 있다. *system services*�
 
 사용자와 관련된 명령어가 몇 가지 있다.
 
-    $ **id**
+    $ id
     uid=1000(ubuntu) gid=1000(ubuntu) groups=1000(ubuntu),4(adm),20(dialout),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plugdev),108(lxd),114(netdev)
-    $ **whoami**
+    $ whoami
     ubuntu
-    $ **sudo id**
+    $ sudo id
     uid=0(root) gid=0(root) groups=0(root)
-    $ **sudo whoami**
+    $ sudo whoami
     root
 
 - **id** : UID를 확인할 수 있다.
 - **whoami** : 사용자 이름을 반환한다.
 
-# Files and Permissions
+
+
+참고 : David M. Davis. _Linux Networking 101_ ActualTech Media. ActualTechMedia
