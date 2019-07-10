@@ -84,7 +84,7 @@ block directive 안에 다른 directive가 들어가 있는 경우 **context**�
 
 트래픽을 다루는 context에서 request를 처리하기 위해 한 개 이상의 server block을 추가해야 한다. 트래픽 타입에 따라 server context 안에 추가할 수 있는 directives들이 다르다.
 
-가상 호스트?<br><br>혹시라도 가상 호스트의 개념을 잘 모른다면 보고 오자: [가상 호스트](https://opentutorials.org/module/384/4529)
+**가상 호스트?**<br><br>혹시라도 가상 호스트의 개념을 잘 모른다면 보고 오자: [가상 호스트](https://opentutorials.org/module/384/4529)
 {: .notice--info}
 
 **http context** 안에 있는 server directive는 특정 도메인이나 IP 주소로의 요청을 처리한다. server context 안에 있는 location context가 특정 URI set을 어떻게 처리할지 정한다.
@@ -180,14 +180,10 @@ location context 안에 있는 directive는 요청을 어떻게 처리할지 정
 
 ## 참고 문서
 
-[https://technerd.tistory.com/19](https://technerd.tistory.com/19)
+- [매우 정리가 잘 된 한글 블로그](https://technerd.tistory.com/19)
 
-- 매우 정리가 잘 된 한글 블로그
 
-[https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/#directives](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/#directives)
+- [영어 공식 문서](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/#directives)
 
-- 영어 공식 문서
 
-[https://nginx.org/en/docs/beginners_guide.html](https://nginx.org/en/docs/beginners_guide.html)
-
-- 영어 공식 문서
+- [영어 공식 문서](https://nginx.org/en/docs/beginners_guide.html)
