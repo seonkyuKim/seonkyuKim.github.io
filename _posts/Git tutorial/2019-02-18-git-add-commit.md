@@ -6,6 +6,10 @@ tags:
 author_profile: true
 ---
   
+## 블로그가 이전되었습니다 => [가나비](https://gonna-be.tistory.com/22)
+
+<br><br><br><br><br><br><br>
+
 파일을 git 저장소에 저장해 봅시다. git을 시작한 디렉토리 안에 저장할 파일을 하나 만듭니다. 저는 **project** 디렉토리에 **sample.txt** 파일을 만들도록 하겠습니다.
 
 **project/sample.txt** 안에 다음과 같이 내용을 입력해보겠습니다:
