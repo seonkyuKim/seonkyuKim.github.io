@@ -6,6 +6,8 @@ tags:
 author_profile: true
 ---
 
+# 블로그가 이전되었습니다: [가나비](https://gonna-be.tistory.com/20)
+
 NGINX를 사용하는데 있어 꼭 필요한 기초 개념들을 정리한 글이다. 전반적인 기초를 다룬 뒤 NIGNX를 web server로 이용하는 방법에 초점을 두어 작성하였다. 또한 너무 자세한 내용은 다루지 않았다.
 
 ## NGINX 시작, 종료, 재시작
