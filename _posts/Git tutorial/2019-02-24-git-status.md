@@ -6,6 +6,7 @@ tags:
 author_profile: true
 ---
 
+<br><br><br><br><br><br><br>
 
 ## 블로그가 이전되었습니다 => [가나비](https://gonna-be.tistory.com/21)
 
