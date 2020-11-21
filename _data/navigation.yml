@@ -1,10 +1,8 @@
 # main links
 main:
-  - title: "Tech"
-    url: /tech/index/
-  - title: "Project"
-    url: /project/index/
-  - title: "Insight"
-    url: /insight/index/
+  - title: "Home"
+    url: /
+  - title: "Tags"
+    url: /tags/index
   - title: "Git Tutorial"
     url: /gitTutorial/index/

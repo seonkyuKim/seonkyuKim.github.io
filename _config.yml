@@ -10,19 +10,19 @@
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-theme                    : "minimal-mistakes-jekyll"
-# remote_theme           : "mmistakes/minimal-mistakes@4.15.1"
+# theme                    : "minimal-mistakes-jekyll"
+remote_theme           : "mmistakes/minimal-mistakes@4.21.0"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
+locale                   : "ko-KR"
 title                    : "GONNABE"
-title_separator          : "-"
-name                     : "Seonkyu Kim(김선규)"
+title_separator          : "|"
+name                     : "김선규"
 description              : "Developer"
 url                      : "https://seonkyuKim.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "seonkyukim/seonkyukim.github.io"  # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -108,9 +108,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "Seonkyu Kim(김선규)"
+  name             : "김선규"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "개발자 블로그"
+  bio              : ""
   location         : "South Korea"
   email            : "hopsprings2ternal@gmail.com"
   links:
@@ -287,11 +287,6 @@ collections:
     output: true
     permalink: /:collection/:path/
 
-# comments
-comments:
-  provider: "disqus"
-  disqus:
-    shortname: "GONNABE"
 
 
 # Defaults
@@ -304,18 +299,9 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
+      show_date: true
+      toc: true
       comments: true
       share: true
       related: true
 
-  #django
-#  - scope:
-#      path: "_django"
-#      type: django
-#    values:
-#      layout: single
-#      author_profile: false
-#      share: false
-#      comments: true
-#      sidebar:
-#        nav: "django"
