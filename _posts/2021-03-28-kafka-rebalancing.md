@@ -1,7 +1,7 @@
 ---
 title: "카프카 리벨런싱에 대하여 (Kafka Rebalancing)"
 tags:
-- Tech
+- kafka
 ---
 
 > 이 글은 [Apache Kafka Rebalance Protocol, or the magic behind your streams applications](https://medium.com/streamthoughts/apache-kafka-rebalance-protocol-or-the-magic-behind-your-streams-applications-e94baf68e4f2) 을 일부 번역한 것입니다.
